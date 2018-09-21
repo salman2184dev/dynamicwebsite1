@@ -402,6 +402,7 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Model\MyModel.edmx.sql" />
     <Content Include="Model\MyModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyModel.edmx</DependentUpon>
