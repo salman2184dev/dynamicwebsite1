@@ -1,0 +1,90 @@
+﻿@using System.Configuration
+@using AlphasoftWebsite.Core.Model
+@model IEnumerable<AlphasoftWebsite.Core.Model.Service>
+@{
+    ViewBag.Title = "ServicesList";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+@{
+    var imgString = ConfigurationManager.AppSettings["ServiceImage"];
+    var image = "";
+
+}
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="../../Content/Frontend/img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>Services</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href=" "><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#">All services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+<!-- Services -->
+<section class="pt-120 pb-90">
+    <div class="container">
+        <div class="row">
+           @foreach(Service item in ViewBag.Services)
+           {          
+               if (item.ServiceImage != null)
+               {
+                   image = imgString + item.ServiceImage;
+               }
+            <div class="col-lg-3 col-sm-6">
+                <div class="single-service text-center" data-animate="fadeInUp" data-delay=".1">
+                    @*<img src="../../Content/Frontend/img/icons/earth.svg" alt="" class="svg">*@
+                    <i class=" fa fa-4x @item.IconList.IconName"></i>
+                    <h4>@item.ServiceName</h4>
+                    <p>@item.ServiceDescription</p>
+                    <a href="#">Learn More <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+           }
+        </div>
+    </div>
+</section>
+<!-- End of Services -->
+<!-- Why Us -->
+<section class="light-bg pt-120 pb-55">
+    <div class="container">
+        <div class="row justify-content-center">
+            @foreach (FactorHeader item in ViewBag.FactorHeader)
+            {
+
+         
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <div class="section-title text-center" data-animate="fadeInUp" data-delay=".1">
+                    <h2>@item.FactorHeaderName</h2>
+                    <p>@item.FactorHeaderBody</p>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="row">
+        @foreach (FactorDetail item in ViewBag.Factor)
+        {
+            <div class="col-lg-4 col-sm-6">
+                <div class="single-feature single-feature-img-left text-left" data-animate="fadeInUp" data-delay=".05">
+                    <div class="single-feature-img">
+                        @*<img src="../../Content/Frontend/img/icons/ftp.svg" alt="" class="svg">*@
+                        <i class="fa fa-4x @item.IconList.IconName"></i>
+                    </div>
+                    <div class="single-feature-content">
+                        <h4>@item.FactorDetailName</h4>
+                        <p>@item.FactorDetailDescription</p>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</section>
+<!-- End of Why One -->

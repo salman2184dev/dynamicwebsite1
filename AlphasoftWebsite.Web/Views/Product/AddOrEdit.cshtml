@@ -1,0 +1,103 @@
+﻿@using System.Configuration
+@model AlphasoftWebsite.Core.Model.Product
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@{
+    var imagestring = ConfigurationManager.AppSettings["ProductImage"];
+}
+@using (Html.BeginForm("AddOrEdit", "Product", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "Product", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Product
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.ProductId, new { id = "modelProductId" })
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.CreatedBy)
+                            @Html.HiddenFor(model => model.ProductImage, new{id = "modelProductImage"})
+
+                            <input type="hidden" id="hiddenProductId" />
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProductName, "Product Name", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @id = "ProName", @maxLength = "50" } })
+                                        @Html.ValidationMessageFor(model => model.ProductName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProductDetails, "Details", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.ProductDetails, new { htmlAttributes = new { @class = "form-control", @id = "ProDetails" }, @rows = "6", @cols = "50" })
+                                        @Html.ValidationMessageFor(model => model.ProductDetails)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Product Category</label>
+                                    <div class="col-md-6">
+                                        <select id="ddlProductCategory" name="ProductCategoryId" class="form-control select2" style="width: 76%">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                        @if (Model.ProductId != 0)
+                                        {
+                                            <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","Product",new{id=0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProductImage, "Image", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-6">
+                                        @if (Model.ProductImage != null)
+                                        {
+                                            string image = imagestring + Model.ProductImage;
+                                            <img src="@Url.Content(image)" style="margin: 10px" height="200" width="200" id="previewImage" />
+                                        }
+                                        else
+
+                                        {
+                                            <img src="@Url.Content("../../Image/Product/Demo.png")" style="margin: 10px" height="100" width="100" id="previewImage" />
+                                        }
+                                        <input type="file" name="uploadedFile" id="ProImage" accept="image/jpeg, image/png" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+

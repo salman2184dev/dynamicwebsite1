@@ -1,0 +1,2307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AlphasoftWebsiteDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogId" />
+          </Key>
+          <Property Name="BlogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BlogDescription" Type="nvarchar(max)" />
+          <Property Name="BlogCategoryId" Type="int" Nullable="false" />
+          <Property Name="BlogImage" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogCategory">
+          <Key>
+            <PropertyRef Name="BlogCategoryId" />
+          </Key>
+          <Property Name="BlogCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogCategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatMessages">
+          <Key>
+            <PropertyRef Name="ChatMessageId" />
+          </Key>
+          <Property Name="ChatMessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatMessageDateTime" Type="datetime" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatUser">
+          <Key>
+            <PropertyRef Name="ChatUserId" />
+          </Key>
+          <Property Name="ChatUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatUserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ConnectionId" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientHeader" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientBody" Type="nvarchar(max)" />
+          <Property Name="ClientBackgroundImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientList">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ClientReview" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ClientImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyEmail" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CompanyFax" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyImage" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="GoogleMapLocation" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanySocialAccountDetail">
+          <Key>
+            <PropertyRef Name="CompanySocialAccountDetailId" />
+          </Key>
+          <Property Name="CompanySocialAccountDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="SocialAccountTypeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConnectionProperties">
+          <Key>
+            <PropertyRef Name="UserConnectionId" />
+          </Key>
+          <Property Name="UserConnectionId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ConnectionId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConnectionStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designations">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DesignationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmployeeImage" Type="nvarchar(max)" />
+          <Property Name="DesignationId" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FactorDetails">
+          <Key>
+            <PropertyRef Name="FactorDetailId" />
+          </Key>
+          <Property Name="FactorDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FactorDetailName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FactorDetailDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FactorHeader">
+          <Key>
+            <PropertyRef Name="FactorHeaderId" />
+          </Key>
+          <Property Name="FactorHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FactorHeaderName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FactorHeaderBody" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FAQId" />
+          </Key>
+          <Property Name="FAQId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQQuestion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FAQAnswer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQHeader">
+          <Key>
+            <PropertyRef Name="FAQHeaderId" />
+          </Key>
+          <Property Name="FAQHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQHeaderName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FAQHeaderBody" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeatureDetails">
+          <Key>
+            <PropertyRef Name="FeatureDetailId" />
+          </Key>
+          <Property Name="FeatureDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeatureDetailTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeatureDetailDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeatureHeader">
+          <Key>
+            <PropertyRef Name="FeatureHeaderId" />
+          </Key>
+          <Property Name="FeatureHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeatureHeaderTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeatureHeaderBody" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="FeatureHeaderImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HomeBanner">
+          <Key>
+            <PropertyRef Name="HomeBannerId" />
+          </Key>
+          <Property Name="HomeBannerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HomeBannerHeader" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HomeBannerDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="HomeBannerImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="SerialNo" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HostType">
+          <Key>
+            <PropertyRef Name="HostTypeId" />
+          </Key>
+          <Property Name="HostTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HostTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PortNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EnableSsl" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IconList">
+          <Key>
+            <PropertyRef Name="IconId" />
+          </Key>
+          <Property Name="IconId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IconFor" Type="nvarchar" MaxLength="150" />
+          <Property Name="IconName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlphasoftWebsiteDB.dbo.LoginInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LoginInfo">
+          <Key>
+            <PropertyRef Name="LogInIfoId" />
+            <PropertyRef Name="LogInTime" />
+            <PropertyRef Name="LoginIp" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LogInIfoId" Type="int" Nullable="false" />
+          <Property Name="LogInTime" Type="datetime" Nullable="false" />
+          <Property Name="LoginIp" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsletterMail">
+          <Key>
+            <PropertyRef Name="NewsletterMailId" />
+          </Key>
+          <Property Name="NewsletterMailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Body" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="AttachFile" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NewsletterSubscribers">
+          <Key>
+            <PropertyRef Name="NewsletterSubscriberId" />
+          </Key>
+          <Property Name="NewsletterSubscriberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsletterSubscriberEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriptionDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnlineUserFeedBackDetail">
+          <Key>
+            <PropertyRef Name="UserFeedBackId" />
+          </Key>
+          <Property Name="UserFeedBackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserFullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserMessageSubject" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="MachineIP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pricing">
+          <Key>
+            <PropertyRef Name="PricingID" />
+          </Key>
+          <Property Name="PricingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PricingHeader" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PricingBody" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PricingDetail">
+          <Key>
+            <PropertyRef Name="PricingDetailID" />
+          </Key>
+          <Property Name="PricingDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PricingTableTypeID" Type="int" Nullable="false" />
+          <Property Name="PricingDetailTypeID" Type="int" Nullable="false" />
+          <Property Name="PricingDetailQuantity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PricingDetailType">
+          <Key>
+            <PropertyRef Name="PricingDetailTypeID" />
+          </Key>
+          <Property Name="PricingDetailTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PricingDetailTypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PricingTableType">
+          <Key>
+            <PropertyRef Name="PricingTableTypeID" />
+          </Key>
+          <Property Name="PricingTableTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PricingTableTypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PricePerMonth" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDetails" Type="nvarchar(max)" />
+          <Property Name="ProductImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResetPassword">
+          <Key>
+            <PropertyRef Name="ResetPasswordId" />
+          </Key>
+          <Property Name="ResetPasswordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewPassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ResetCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ResetTime" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SentMailLog">
+          <Key>
+            <PropertyRef Name="SentMailLogId" />
+          </Key>
+          <Property Name="SentMailLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsletterSubscriberEmailId" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NewsletterMailSubject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceHeader" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="ServiceImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceProperty">
+          <Key>
+            <PropertyRef Name="ServicePropertyId" />
+          </Key>
+          <Property Name="ServicePropertyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServicePropertyName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SmtpHost">
+          <Key>
+            <PropertyRef Name="SmtpHostId" />
+          </Key>
+          <Property Name="SmtpHostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActiveUserName" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="HostTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SocialAccountType">
+          <Key>
+            <PropertyRef Name="SocialAccountTypeId" />
+          </Key>
+          <Property Name="SocialAccountTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocialAccountName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Software">
+          <Key>
+            <PropertyRef Name="SoftwareId" />
+          </Key>
+          <Property Name="SoftwareId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SoftwareName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoftwareDetails" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SoftwareImage" Type="nvarchar(max)" />
+          <Property Name="SoftwareCategoryId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftwareCategory">
+          <Key>
+            <PropertyRef Name="SoftwareCategoryId" />
+          </Key>
+          <Property Name="SoftwareCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SoftwareCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="ActivationCode" Type="nvarchar(max)" />
+          <Property Name="ResetPasswordCode" Type="nvarchar(max)" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blog_BlogCategory">
+          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlogCategory">
+              <PropertyRef Name="BlogCategoryId" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="BlogCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatMessages_ChatMessages">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ChatMessages" Type="Self.ChatMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ChatMessages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySocialAccountDetail_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="CompanySocialAccountDetail" Type="Self.CompanySocialAccountDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanySocialAccountDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySocialAccountDetail_SocialAccountType">
+          <End Role="SocialAccountType" Type="Self.SocialAccountType" Multiplicity="1" />
+          <End Role="CompanySocialAccountDetail" Type="Self.CompanySocialAccountDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocialAccountType">
+              <PropertyRef Name="SocialAccountTypeId" />
+            </Principal>
+            <Dependent Role="CompanySocialAccountDetail">
+              <PropertyRef Name="SocialAccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectionProperties_ConnectionProperties">
+          <End Role="ChatUser" Type="Self.ChatUser" Multiplicity="1" />
+          <End Role="ConnectionProperties" Type="Self.ConnectionProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatUser">
+              <PropertyRef Name="ChatUserId" />
+            </Principal>
+            <Dependent Role="ConnectionProperties">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Designation">
+          <End Role="Designations" Type="Self.Designations" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designations">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactorDetails_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="FactorDetails" Type="Self.FactorDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="FactorDetails">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeatureDetails_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="FeatureDetails" Type="Self.FeatureDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="FeatureDetails">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoginInfo_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LoginInfo" Type="Self.LoginInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LoginInfo">
+              <PropertyRef Name="LogInIfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PricingDetail_PricingDetailType">
+          <End Role="PricingDetailType" Type="Self.PricingDetailType" Multiplicity="1" />
+          <End Role="PricingDetail" Type="Self.PricingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PricingDetailType">
+              <PropertyRef Name="PricingDetailTypeID" />
+            </Principal>
+            <Dependent Role="PricingDetail">
+              <PropertyRef Name="PricingDetailTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PricingDetail_PricingTableType">
+          <End Role="PricingTableType" Type="Self.PricingTableType" Multiplicity="1" />
+          <End Role="PricingDetail" Type="Self.PricingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PricingTableType">
+              <PropertyRef Name="PricingTableTypeID" />
+            </Principal>
+            <Dependent Role="PricingDetail">
+              <PropertyRef Name="PricingTableTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResetPassword_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ResetPassword" Type="Self.ResetPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ResetPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProperty_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ServiceProperty" Type="Self.ServiceProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServiceProperty">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmtpHost_HostType">
+          <End Role="HostType" Type="Self.HostType" Multiplicity="1" />
+          <End Role="SmtpHost" Type="Self.SmtpHost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HostType">
+              <PropertyRef Name="HostTypeId" />
+            </Principal>
+            <Dependent Role="SmtpHost">
+              <PropertyRef Name="HostTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialAccountType_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="SocialAccountType" Type="Self.SocialAccountType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="SocialAccountType">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Software_SoftwareCategory">
+          <End Role="SoftwareCategory" Type="Self.SoftwareCategory" Multiplicity="1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftwareCategory">
+              <PropertyRef Name="SoftwareCategoryId" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="SoftwareCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlphasoftWebsiteDBModelStoreContainer">
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogCategory" EntityType="Self.BlogCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatUser" EntityType="Self.ChatUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientList" EntityType="Self.ClientList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyDetail" EntityType="Self.CompanyDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanySocialAccountDetail" EntityType="Self.CompanySocialAccountDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectionProperties" EntityType="Self.ConnectionProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designations" EntityType="Self.Designations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactorDetails" EntityType="Self.FactorDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactorHeader" EntityType="Self.FactorHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQHeader" EntityType="Self.FAQHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeatureDetails" EntityType="Self.FeatureDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeatureHeader" EntityType="Self.FeatureHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeBanner" EntityType="Self.HomeBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostType" EntityType="Self.HostType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IconList" EntityType="Self.IconList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsletterMail" EntityType="Self.NewsletterMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsletterSubscribers" EntityType="Self.NewsletterSubscribers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OnlineUserFeedBackDetail" EntityType="Self.OnlineUserFeedBackDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pricing" EntityType="Self.Pricing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PricingDetail" EntityType="Self.PricingDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PricingDetailType" EntityType="Self.PricingDetailType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PricingTableType" EntityType="Self.PricingTableType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResetPassword" EntityType="Self.ResetPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SentMailLog" EntityType="Self.SentMailLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProperty" EntityType="Self.ServiceProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmtpHost" EntityType="Self.SmtpHost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocialAccountType" EntityType="Self.SocialAccountType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Software" EntityType="Self.Software" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftwareCategory" EntityType="Self.SoftwareCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LoginInfo].[LogInIfoId] AS [LogInIfoId], 
+    [LoginInfo].[LogInTime] AS [LogInTime], 
+    [LoginInfo].[LoginIp] AS [LoginIp], 
+    [LoginInfo].[UserId] AS [UserId]
+    FROM [dbo].[LoginInfo] AS [LoginInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Blog_BlogCategory" Association="Self.FK_Blog_BlogCategory">
+            <End Role="BlogCategory" EntitySet="BlogCategory" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatMessages_ChatMessages" Association="Self.FK_ChatMessages_ChatMessages">
+            <End Role="User" EntitySet="User" />
+            <End Role="ChatMessages" EntitySet="ChatMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySocialAccountDetail_CompanyDetail" Association="Self.FK_CompanySocialAccountDetail_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="CompanySocialAccountDetail" EntitySet="CompanySocialAccountDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySocialAccountDetail_SocialAccountType" Association="Self.FK_CompanySocialAccountDetail_SocialAccountType">
+            <End Role="SocialAccountType" EntitySet="SocialAccountType" />
+            <End Role="CompanySocialAccountDetail" EntitySet="CompanySocialAccountDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectionProperties_ConnectionProperties" Association="Self.FK_ConnectionProperties_ConnectionProperties">
+            <End Role="ChatUser" EntitySet="ChatUser" />
+            <End Role="ConnectionProperties" EntitySet="ConnectionProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Designation" Association="Self.FK_Employee_Designation">
+            <End Role="Designations" EntitySet="Designations" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactorDetails_IconList" Association="Self.FK_FactorDetails_IconList">
+            <End Role="IconList" EntitySet="IconList" />
+            <End Role="FactorDetails" EntitySet="FactorDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeatureDetails_IconList" Association="Self.FK_FeatureDetails_IconList">
+            <End Role="IconList" EntitySet="IconList" />
+            <End Role="FeatureDetails" EntitySet="FeatureDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoginInfo_User" Association="Self.FK_LoginInfo_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LoginInfo" EntitySet="LoginInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PricingDetail_PricingDetailType" Association="Self.FK_PricingDetail_PricingDetailType">
+            <End Role="PricingDetailType" EntitySet="PricingDetailType" />
+            <End Role="PricingDetail" EntitySet="PricingDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PricingDetail_PricingTableType" Association="Self.FK_PricingDetail_PricingTableType">
+            <End Role="PricingTableType" EntitySet="PricingTableType" />
+            <End Role="PricingDetail" EntitySet="PricingDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResetPassword_User" Association="Self.FK_ResetPassword_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ResetPassword" EntitySet="ResetPassword" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_IconList" Association="Self.FK_Service_IconList">
+            <End Role="IconList" EntitySet="IconList" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProperty_Service" Association="Self.FK_ServiceProperty_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiceProperty" EntitySet="ServiceProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmtpHost_HostType" Association="Self.FK_SmtpHost_HostType">
+            <End Role="HostType" EntitySet="HostType" />
+            <End Role="SmtpHost" EntitySet="SmtpHost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialAccountType_IconList" Association="Self.FK_SocialAccountType_IconList">
+            <End Role="IconList" EntitySet="IconList" />
+            <End Role="SocialAccountType" EntitySet="SocialAccountType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Software_SoftwareCategory" Association="Self.FK_Software_SoftwareCategory">
+            <End Role="SoftwareCategory" EntitySet="SoftwareCategory" />
+            <End Role="Software" EntitySet="Software" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlphasoftWebsiteDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogId" />
+          </Key>
+          <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlogCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BlogImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BlogCategory" Relationship="Self.FK_Blog_BlogCategory" FromRole="Blog" ToRole="BlogCategory" />
+        </EntityType>
+        <EntityType Name="BlogCategory">
+          <Key>
+            <PropertyRef Name="BlogCategoryId" />
+          </Key>
+          <Property Name="BlogCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_BlogCategory" FromRole="BlogCategory" ToRole="Blog" />
+        </EntityType>
+        <EntityType Name="ChatMessage">
+          <Key>
+            <PropertyRef Name="ChatMessageId" />
+          </Key>
+          <Property Name="ChatMessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatMessageDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ChatMessages_ChatMessages" FromRole="ChatMessages" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ChatUser">
+          <Key>
+            <PropertyRef Name="ChatUserId" />
+          </Key>
+          <Property Name="ChatUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConnectionId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConnectionProperties" Relationship="Self.FK_ConnectionProperties_ConnectionProperties" FromRole="ChatUser" ToRole="ConnectionProperties" />
+        </EntityType>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyFax" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GoogleMapLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CompanySocialAccountDetails" Relationship="Self.FK_CompanySocialAccountDetail_CompanyDetail" FromRole="CompanyDetail" ToRole="CompanySocialAccountDetail" />
+        </EntityType>
+        <EntityType Name="CompanySocialAccountDetail">
+          <Key>
+            <PropertyRef Name="CompanySocialAccountDetailId" />
+          </Key>
+          <Property Name="CompanySocialAccountDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SocialAccountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CompanyDetail" Relationship="Self.FK_CompanySocialAccountDetail_CompanyDetail" FromRole="CompanySocialAccountDetail" ToRole="CompanyDetail" />
+          <NavigationProperty Name="SocialAccountType" Relationship="Self.FK_CompanySocialAccountDetail_SocialAccountType" FromRole="CompanySocialAccountDetail" ToRole="SocialAccountType" />
+        </EntityType>
+        <EntityType Name="ConnectionProperty">
+          <Key>
+            <PropertyRef Name="UserConnectionId" />
+          </Key>
+          <Property Name="UserConnectionId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ConnectionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConnectionStatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ChatUser" Relationship="Self.FK_ConnectionProperties_ConnectionProperties" FromRole="ConnectionProperties" ToRole="ChatUser" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesignationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Designation" FromRole="Designations" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DesignationId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Designation" Relationship="Self.FK_Employee_Designation" FromRole="Employees" ToRole="Designations" />
+        </EntityType>
+        <EntityType Name="FactorDetail">
+          <Key>
+            <PropertyRef Name="FactorDetailId" />
+          </Key>
+          <Property Name="FactorDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FactorDetailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FactorDetailDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IconList" Relationship="Self.FK_FactorDetails_IconList" FromRole="FactorDetails" ToRole="IconList" />
+        </EntityType>
+        <EntityType Name="FactorHeader">
+          <Key>
+            <PropertyRef Name="FactorHeaderId" />
+          </Key>
+          <Property Name="FactorHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FactorHeaderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FactorHeaderBody" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FAQId" />
+          </Key>
+          <Property Name="FAQId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FAQAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FeatureDetail">
+          <Key>
+            <PropertyRef Name="FeatureDetailId" />
+          </Key>
+          <Property Name="FeatureDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeatureDetailTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeatureDetailDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IconList" Relationship="Self.FK_FeatureDetails_IconList" FromRole="FeatureDetails" ToRole="IconList" />
+        </EntityType>
+        <EntityType Name="FeatureHeader">
+          <Key>
+            <PropertyRef Name="FeatureHeaderId" />
+          </Key>
+          <Property Name="FeatureHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeatureHeaderTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeatureHeaderBody" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeatureHeaderImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="HomeBanner">
+          <Key>
+            <PropertyRef Name="HomeBannerId" />
+          </Key>
+          <Property Name="HomeBannerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HomeBannerHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HomeBannerDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HomeBannerImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="SerialNo" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="IconList">
+          <Key>
+            <PropertyRef Name="IconId" />
+          </Key>
+          <Property Name="IconId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IconFor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IconName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="FactorDetails" Relationship="Self.FK_FactorDetails_IconList" FromRole="IconList" ToRole="FactorDetails" />
+          <NavigationProperty Name="FeatureDetails" Relationship="Self.FK_FeatureDetails_IconList" FromRole="IconList" ToRole="FeatureDetails" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Service_IconList" FromRole="IconList" ToRole="Service" />
+          <NavigationProperty Name="SocialAccountTypes" Relationship="Self.FK_SocialAccountType_IconList" FromRole="IconList" ToRole="SocialAccountType" />
+        </EntityType>
+        <EntityType Name="NewsletterMail">
+          <Key>
+            <PropertyRef Name="NewsletterMailId" />
+          </Key>
+          <Property Name="NewsletterMailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AttachFile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ResetPassword">
+          <Key>
+            <PropertyRef Name="ResetPasswordId" />
+          </Key>
+          <Property Name="ResetPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResetCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResetTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ResetPassword_User" FromRole="ResetPassword" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IconList" Relationship="Self.FK_Service_IconList" FromRole="Service" ToRole="IconList" />
+          <NavigationProperty Name="ServiceProperties" Relationship="Self.FK_ServiceProperty_Service" FromRole="Service" ToRole="ServiceProperty" />
+        </EntityType>
+        <EntityType Name="ServiceProperty">
+          <Key>
+            <PropertyRef Name="ServicePropertyId" />
+          </Key>
+          <Property Name="ServicePropertyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServicePropertyName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_ServiceProperty_Service" FromRole="ServiceProperty" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="SocialAccountType">
+          <Key>
+            <PropertyRef Name="SocialAccountTypeId" />
+          </Key>
+          <Property Name="SocialAccountTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocialAccountName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanySocialAccountDetails" Relationship="Self.FK_CompanySocialAccountDetail_SocialAccountType" FromRole="SocialAccountType" ToRole="CompanySocialAccountDetail" />
+          <NavigationProperty Name="IconList" Relationship="Self.FK_SocialAccountType_IconList" FromRole="SocialAccountType" ToRole="IconList" />
+        </EntityType>
+        <EntityType Name="Software">
+          <Key>
+            <PropertyRef Name="SoftwareId" />
+          </Key>
+          <Property Name="SoftwareId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoftwareName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoftwareDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoftwareImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoftwareCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SoftwareCategory" Relationship="Self.FK_Software_SoftwareCategory" FromRole="Software" ToRole="SoftwareCategory" />
+        </EntityType>
+        <EntityType Name="SoftwareCategory">
+          <Key>
+            <PropertyRef Name="SoftwareCategoryId" />
+          </Key>
+          <Property Name="SoftwareCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoftwareCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Softwares" Relationship="Self.FK_Software_SoftwareCategory" FromRole="SoftwareCategory" ToRole="Software" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="ActivationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ChatMessages" Relationship="Self.FK_ChatMessages_ChatMessages" FromRole="User" ToRole="ChatMessages" />
+          <NavigationProperty Name="ResetPasswords" Relationship="Self.FK_ResetPassword_User" FromRole="User" ToRole="ResetPassword" />
+          <NavigationProperty Name="LoginInfoes" Relationship="Self.FK_LoginInfo_User" FromRole="User" ToRole="LoginInfo" />
+        </EntityType>
+        <EntityType Name="LoginInfo">
+          <Key>
+            <PropertyRef Name="LogInIfoId" />
+            <PropertyRef Name="LogInTime" />
+            <PropertyRef Name="LoginIp" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LogInIfoId" Type="Int32" Nullable="false" />
+          <Property Name="LogInTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LoginInfo_User" FromRole="LoginInfo" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Blog_BlogCategory">
+          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlogCategory">
+              <PropertyRef Name="BlogCategoryId" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="BlogCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatMessages_ChatMessages">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ChatMessages" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ChatMessages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectionProperties_ConnectionProperties">
+          <End Role="ChatUser" Type="Self.ChatUser" Multiplicity="1" />
+          <End Role="ConnectionProperties" Type="Self.ConnectionProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatUser">
+              <PropertyRef Name="ChatUserId" />
+            </Principal>
+            <Dependent Role="ConnectionProperties">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySocialAccountDetail_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="CompanySocialAccountDetail" Type="Self.CompanySocialAccountDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanySocialAccountDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySocialAccountDetail_SocialAccountType">
+          <End Role="SocialAccountType" Type="Self.SocialAccountType" Multiplicity="1" />
+          <End Role="CompanySocialAccountDetail" Type="Self.CompanySocialAccountDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocialAccountType">
+              <PropertyRef Name="SocialAccountTypeId" />
+            </Principal>
+            <Dependent Role="CompanySocialAccountDetail">
+              <PropertyRef Name="SocialAccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Designation">
+          <End Role="Designations" Type="Self.Designation" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designations">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactorDetails_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="FactorDetails" Type="Self.FactorDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="FactorDetails">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeatureDetails_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="FeatureDetails" Type="Self.FeatureDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="FeatureDetails">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialAccountType_IconList">
+          <End Role="IconList" Type="Self.IconList" Multiplicity="1" />
+          <End Role="SocialAccountType" Type="Self.SocialAccountType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IconList">
+              <PropertyRef Name="IconId" />
+            </Principal>
+            <Dependent Role="SocialAccountType">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResetPassword_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ResetPassword" Type="Self.ResetPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ResetPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProperty_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ServiceProperty" Type="Self.ServiceProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServiceProperty">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Software_SoftwareCategory">
+          <End Role="SoftwareCategory" Type="Self.SoftwareCategory" Multiplicity="1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftwareCategory">
+              <PropertyRef Name="SoftwareCategoryId" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="SoftwareCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoginInfo_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LoginInfo" Type="Self.LoginInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LoginInfo">
+              <PropertyRef Name="LogInIfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlphasoftWebsiteContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Blogs" EntityType="Self.Blog" />
+          <EntitySet Name="BlogCategories" EntityType="Self.BlogCategory" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessage" />
+          <EntitySet Name="ChatUsers" EntityType="Self.ChatUser" />
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetail" />
+          <EntitySet Name="CompanySocialAccountDetails" EntityType="Self.CompanySocialAccountDetail" />
+          <EntitySet Name="ConnectionProperties" EntityType="Self.ConnectionProperty" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="FactorDetails" EntityType="Self.FactorDetail" />
+          <EntitySet Name="FactorHeaders" EntityType="Self.FactorHeader" />
+          <EntitySet Name="FAQs" EntityType="Self.FAQ" />
+          <EntitySet Name="FeatureDetails" EntityType="Self.FeatureDetail" />
+          <EntitySet Name="FeatureHeaders" EntityType="Self.FeatureHeader" />
+          <EntitySet Name="HomeBanners" EntityType="Self.HomeBanner" />
+          <EntitySet Name="IconLists" EntityType="Self.IconList" />
+          <EntitySet Name="NewsletterMails" EntityType="Self.NewsletterMail" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+          <EntitySet Name="ResetPasswords" EntityType="Self.ResetPassword" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="ServiceProperties" EntityType="Self.ServiceProperty" />
+          <EntitySet Name="SocialAccountTypes" EntityType="Self.SocialAccountType" />
+          <EntitySet Name="Softwares" EntityType="Self.Software" />
+          <EntitySet Name="SoftwareCategories" EntityType="Self.SoftwareCategory" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="LoginInfoes" EntityType="Self.LoginInfo" />
+          <AssociationSet Name="FK_Blog_BlogCategory" Association="Self.FK_Blog_BlogCategory">
+            <End Role="BlogCategory" EntitySet="BlogCategories" />
+            <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatMessages_ChatMessages" Association="Self.FK_ChatMessages_ChatMessages">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChatMessages" EntitySet="ChatMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectionProperties_ConnectionProperties" Association="Self.FK_ConnectionProperties_ConnectionProperties">
+            <End Role="ChatUser" EntitySet="ChatUsers" />
+            <End Role="ConnectionProperties" EntitySet="ConnectionProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySocialAccountDetail_CompanyDetail" Association="Self.FK_CompanySocialAccountDetail_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="CompanySocialAccountDetail" EntitySet="CompanySocialAccountDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySocialAccountDetail_SocialAccountType" Association="Self.FK_CompanySocialAccountDetail_SocialAccountType">
+            <End Role="SocialAccountType" EntitySet="SocialAccountTypes" />
+            <End Role="CompanySocialAccountDetail" EntitySet="CompanySocialAccountDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Designation" Association="Self.FK_Employee_Designation">
+            <End Role="Designations" EntitySet="Designations" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactorDetails_IconList" Association="Self.FK_FactorDetails_IconList">
+            <End Role="IconList" EntitySet="IconLists" />
+            <End Role="FactorDetails" EntitySet="FactorDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeatureDetails_IconList" Association="Self.FK_FeatureDetails_IconList">
+            <End Role="IconList" EntitySet="IconLists" />
+            <End Role="FeatureDetails" EntitySet="FeatureDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_IconList" Association="Self.FK_Service_IconList">
+            <End Role="IconList" EntitySet="IconLists" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialAccountType_IconList" Association="Self.FK_SocialAccountType_IconList">
+            <End Role="IconList" EntitySet="IconLists" />
+            <End Role="SocialAccountType" EntitySet="SocialAccountTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResetPassword_User" Association="Self.FK_ResetPassword_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ResetPassword" EntitySet="ResetPasswords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProperty_Service" Association="Self.FK_ServiceProperty_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="ServiceProperty" EntitySet="ServiceProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Software_SoftwareCategory" Association="Self.FK_Software_SoftwareCategory">
+            <End Role="SoftwareCategory" EntitySet="SoftwareCategories" />
+            <End Role="Software" EntitySet="Softwares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoginInfo_User" Association="Self.FK_LoginInfo_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="LoginInfo" EntitySet="LoginInfoes" />
+          </AssociationSet>
+          <EntitySet Name="FAQHeaders" EntityType="AlphasoftWebsiteDBModel.FAQHeader" />
+          <EntitySet Name="SentMailLogs" EntityType="AlphasoftWebsiteDBModel.SentMailLog" />
+          <EntitySet Name="NewsletterSubscribers" EntityType="AlphasoftWebsiteDBModel.NewsletterSubscriber" />
+          <EntitySet Name="Pricings" EntityType="AlphasoftWebsiteDBModel.Pricing" />
+          <EntitySet Name="PricingDetails" EntityType="AlphasoftWebsiteDBModel.PricingDetail" />
+          <EntitySet Name="PricingDetailTypes" EntityType="AlphasoftWebsiteDBModel.PricingDetailType" />
+          <EntitySet Name="PricingTableTypes" EntityType="AlphasoftWebsiteDBModel.PricingTableType" />
+          <AssociationSet Name="FK_PricingDetail_PricingDetailType" Association="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingDetailType">
+            <End Role="PricingDetailType" EntitySet="PricingDetailTypes" />
+            <End Role="PricingDetail" EntitySet="PricingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PricingDetail_PricingTableType" Association="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingTableType">
+            <End Role="PricingTableType" EntitySet="PricingTableTypes" />
+            <End Role="PricingDetail" EntitySet="PricingDetails" />
+          </AssociationSet>
+          <EntitySet Name="SmtpHosts" EntityType="AlphasoftWebsiteDBModel.SmtpHost" />
+          <EntitySet Name="HostTypes" EntityType="AlphasoftWebsiteDBModel.HostType" />
+          <AssociationSet Name="FK_SmtpHost_HostType" Association="AlphasoftWebsiteDBModel.FK_SmtpHost_HostType">
+            <End Role="HostType" EntitySet="HostTypes" />
+            <End Role="SmtpHost" EntitySet="SmtpHosts" />
+          </AssociationSet>
+          <EntitySet Name="Clients" EntityType="AlphasoftWebsiteDBModel.Client" />
+          <EntitySet Name="ClientLists" EntityType="AlphasoftWebsiteDBModel.ClientList" />
+          <EntitySet Name="OnlineUserFeedBackDetails" EntityType="AlphasoftWebsiteDBModel.OnlineUserFeedBackDetail" />
+        </EntityContainer>
+        <EntityType Name="FAQHeader">
+          <Key>
+            <PropertyRef Name="FAQHeaderId" />
+          </Key>
+          <Property Name="FAQHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQHeaderName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FAQHeaderBody" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SentMailLog">
+          <Key>
+            <PropertyRef Name="SentMailLogId" />
+          </Key>
+          <Property Name="SentMailLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsletterSubscriberEmailId" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NewsletterMailSubject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsletterSubscriber">
+          <Key>
+            <PropertyRef Name="NewsletterSubscriberId" />
+          </Key>
+          <Property Name="NewsletterSubscriberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsletterSubscriberEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriptionDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pricing">
+          <Key>
+            <PropertyRef Name="PricingID" />
+          </Key>
+          <Property Name="PricingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PricingHeader" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PricingBody" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PricingDetail">
+          <Key>
+            <PropertyRef Name="PricingDetailID" />
+          </Key>
+          <Property Name="PricingDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PricingTableTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PricingDetailTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PricingDetailQuantity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PricingDetailType" Relationship="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingDetailType" FromRole="PricingDetail" ToRole="PricingDetailType" />
+          <NavigationProperty Name="PricingTableType" Relationship="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingTableType" FromRole="PricingDetail" ToRole="PricingTableType" />
+        </EntityType>
+        <EntityType Name="PricingDetailType">
+          <Key>
+            <PropertyRef Name="PricingDetailTypeID" />
+          </Key>
+          <Property Name="PricingDetailTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PricingDetailTypeName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PricingDetails" Relationship="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingDetailType" FromRole="PricingDetailType" ToRole="PricingDetail" />
+        </EntityType>
+        <EntityType Name="PricingTableType">
+          <Key>
+            <PropertyRef Name="PricingTableTypeID" />
+          </Key>
+          <Property Name="PricingTableTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PricingTableTypeName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PricePerMonth" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PricingDetails" Relationship="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingTableType" FromRole="PricingTableType" ToRole="PricingDetail" />
+        </EntityType>
+        <Association Name="FK_PricingDetail_PricingDetailType">
+          <End Type="AlphasoftWebsiteDBModel.PricingDetailType" Role="PricingDetailType" Multiplicity="1" />
+          <End Type="AlphasoftWebsiteDBModel.PricingDetail" Role="PricingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PricingDetailType">
+              <PropertyRef Name="PricingDetailTypeID" />
+            </Principal>
+            <Dependent Role="PricingDetail">
+              <PropertyRef Name="PricingDetailTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PricingDetail_PricingTableType">
+          <End Type="AlphasoftWebsiteDBModel.PricingTableType" Role="PricingTableType" Multiplicity="1" />
+          <End Type="AlphasoftWebsiteDBModel.PricingDetail" Role="PricingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PricingTableType">
+              <PropertyRef Name="PricingTableTypeID" />
+            </Principal>
+            <Dependent Role="PricingDetail">
+              <PropertyRef Name="PricingTableTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SmtpHost">
+          <Key>
+            <PropertyRef Name="SmtpHostId" />
+          </Key>
+          <Property Name="SmtpHostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActiveUserName" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="HostTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HostType" Relationship="AlphasoftWebsiteDBModel.FK_SmtpHost_HostType" FromRole="SmtpHost" ToRole="HostType" />
+        </EntityType>
+        <EntityType Name="HostType">
+          <Key>
+            <PropertyRef Name="HostTypeId" />
+          </Key>
+          <Property Name="HostTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HostTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HostName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PortNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SmtpHosts" Relationship="AlphasoftWebsiteDBModel.FK_SmtpHost_HostType" FromRole="HostType" ToRole="SmtpHost" />
+          <Property Name="EnableSsl" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SmtpHost_HostType">
+          <End Type="AlphasoftWebsiteDBModel.HostType" Role="HostType" Multiplicity="1" />
+          <End Type="AlphasoftWebsiteDBModel.SmtpHost" Role="SmtpHost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HostType">
+              <PropertyRef Name="HostTypeId" />
+            </Principal>
+            <Dependent Role="SmtpHost">
+              <PropertyRef Name="HostTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientHeader" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientBackgroundImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ClientList">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ClientReview" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientImage" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnlineUserFeedBackDetail">
+          <Key>
+            <PropertyRef Name="UserFeedBackId" />
+          </Key>
+          <Property Name="UserFeedBackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserFullName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserMessageSubject" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MachineIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlphasoftWebsiteDBModelStoreContainer" CdmEntityContainer="AlphasoftWebsiteContext">
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+                <ScalarProperty Name="BlogName" ColumnName="BlogName" />
+                <ScalarProperty Name="BlogDescription" ColumnName="BlogDescription" />
+                <ScalarProperty Name="BlogCategoryId" ColumnName="BlogCategoryId" />
+                <ScalarProperty Name="BlogImage" ColumnName="BlogImage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogCategories">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.BlogCategory">
+              <MappingFragment StoreEntitySet="BlogCategory">
+                <ScalarProperty Name="BlogCategoryId" ColumnName="BlogCategoryId" />
+                <ScalarProperty Name="BlogCategoryName" ColumnName="BlogCategoryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatMessages">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ChatMessage">
+              <MappingFragment StoreEntitySet="ChatMessages">
+                <ScalarProperty Name="ChatMessageId" ColumnName="ChatMessageId" />
+                <ScalarProperty Name="ChatMessageDateTime" ColumnName="ChatMessageDateTime" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatUsers">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ChatUser">
+              <MappingFragment StoreEntitySet="ChatUser">
+                <ScalarProperty Name="ChatUserId" ColumnName="ChatUserId" />
+                <ScalarProperty Name="ChatUserName" ColumnName="ChatUserName" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetail">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyFax" ColumnName="CompanyFax" />
+                <ScalarProperty Name="CompanyImage" ColumnName="CompanyImage" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="GoogleMapLocation" ColumnName="GoogleMapLocation" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanySocialAccountDetails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.CompanySocialAccountDetail">
+              <MappingFragment StoreEntitySet="CompanySocialAccountDetail">
+                <ScalarProperty Name="CompanySocialAccountDetailId" ColumnName="CompanySocialAccountDetailId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SocialAccountTypeId" ColumnName="SocialAccountTypeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectionProperties">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ConnectionProperty">
+              <MappingFragment StoreEntitySet="ConnectionProperties">
+                <ScalarProperty Name="UserConnectionId" ColumnName="UserConnectionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+                <ScalarProperty Name="ConnectionStatus" ColumnName="ConnectionStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Designation">
+              <MappingFragment StoreEntitySet="Designations">
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+                <ScalarProperty Name="EmployeeImage" ColumnName="EmployeeImage" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactorDetails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.FactorDetail">
+              <MappingFragment StoreEntitySet="FactorDetails">
+                <ScalarProperty Name="FactorDetailId" ColumnName="FactorDetailId" />
+                <ScalarProperty Name="FactorDetailName" ColumnName="FactorDetailName" />
+                <ScalarProperty Name="FactorDetailDescription" ColumnName="FactorDetailDescription" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactorHeaders">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.FactorHeader">
+              <MappingFragment StoreEntitySet="FactorHeader">
+                <ScalarProperty Name="FactorHeaderId" ColumnName="FactorHeaderId" />
+                <ScalarProperty Name="FactorHeaderName" ColumnName="FactorHeaderName" />
+                <ScalarProperty Name="FactorHeaderBody" ColumnName="FactorHeaderBody" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQs">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="FAQId" ColumnName="FAQId" />
+                <ScalarProperty Name="FAQQuestion" ColumnName="FAQQuestion" />
+                <ScalarProperty Name="FAQAnswer" ColumnName="FAQAnswer" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeatureDetails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.FeatureDetail">
+              <MappingFragment StoreEntitySet="FeatureDetails">
+                <ScalarProperty Name="FeatureDetailId" ColumnName="FeatureDetailId" />
+                <ScalarProperty Name="FeatureDetailTitle" ColumnName="FeatureDetailTitle" />
+                <ScalarProperty Name="FeatureDetailDescription" ColumnName="FeatureDetailDescription" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeatureHeaders">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.FeatureHeader">
+              <MappingFragment StoreEntitySet="FeatureHeader">
+                <ScalarProperty Name="FeatureHeaderId" ColumnName="FeatureHeaderId" />
+                <ScalarProperty Name="FeatureHeaderTitle" ColumnName="FeatureHeaderTitle" />
+                <ScalarProperty Name="FeatureHeaderBody" ColumnName="FeatureHeaderBody" />
+                <ScalarProperty Name="FeatureHeaderImage" ColumnName="FeatureHeaderImage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeBanners">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.HomeBanner">
+              <MappingFragment StoreEntitySet="HomeBanner">
+                <ScalarProperty Name="HomeBannerId" ColumnName="HomeBannerId" />
+                <ScalarProperty Name="HomeBannerHeader" ColumnName="HomeBannerHeader" />
+                <ScalarProperty Name="HomeBannerDescription" ColumnName="HomeBannerDescription" />
+                <ScalarProperty Name="HomeBannerImage" ColumnName="HomeBannerImage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IconLists">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.IconList">
+              <MappingFragment StoreEntitySet="IconList">
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="IconFor" ColumnName="IconFor" />
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsletterMails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.NewsletterMail">
+              <MappingFragment StoreEntitySet="NewsletterMail">
+                <ScalarProperty Name="NewsletterMailId" ColumnName="NewsletterMailId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="AttachFile" ColumnName="AttachFile" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResetPasswords">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ResetPassword">
+              <MappingFragment StoreEntitySet="ResetPassword">
+                <ScalarProperty Name="ResetPasswordId" ColumnName="ResetPasswordId" />
+                <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
+                <ScalarProperty Name="ResetCode" ColumnName="ResetCode" />
+                <ScalarProperty Name="ResetTime" ColumnName="ResetTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="ServiceHeader" ColumnName="ServiceHeader" />
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="ServiceImage" ColumnName="ServiceImage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProperties">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ServiceProperty">
+              <MappingFragment StoreEntitySet="ServiceProperty">
+                <ScalarProperty Name="ServicePropertyId" ColumnName="ServicePropertyId" />
+                <ScalarProperty Name="ServicePropertyName" ColumnName="ServicePropertyName" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocialAccountTypes">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.SocialAccountType">
+              <MappingFragment StoreEntitySet="SocialAccountType">
+                <ScalarProperty Name="SocialAccountTypeId" ColumnName="SocialAccountTypeId" />
+                <ScalarProperty Name="SocialAccountName" ColumnName="SocialAccountName" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Softwares">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Software">
+              <MappingFragment StoreEntitySet="Software">
+                <ScalarProperty Name="SoftwareId" ColumnName="SoftwareId" />
+                <ScalarProperty Name="SoftwareName" ColumnName="SoftwareName" />
+                <ScalarProperty Name="SoftwareDetails" ColumnName="SoftwareDetails" />
+                <ScalarProperty Name="SoftwareImage" ColumnName="SoftwareImage" />
+                <ScalarProperty Name="SoftwareCategoryId" ColumnName="SoftwareCategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftwareCategories">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.SoftwareCategory">
+              <MappingFragment StoreEntitySet="SoftwareCategory">
+                <ScalarProperty Name="SoftwareCategoryId" ColumnName="SoftwareCategoryId" />
+                <ScalarProperty Name="SoftwareCategoryName" ColumnName="SoftwareCategoryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginInfoes">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.LoginInfo">
+              <MappingFragment StoreEntitySet="LoginInfo">
+                <ScalarProperty Name="LogInIfoId" ColumnName="LogInIfoId" />
+                <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
+                <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQHeaders">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.FAQHeader">
+              <MappingFragment StoreEntitySet="FAQHeader">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FAQHeaderBody" ColumnName="FAQHeaderBody" />
+                <ScalarProperty Name="FAQHeaderName" ColumnName="FAQHeaderName" />
+                <ScalarProperty Name="FAQHeaderId" ColumnName="FAQHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SentMailLogs">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.SentMailLog">
+              <MappingFragment StoreEntitySet="SentMailLog">
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="NewsletterMailSubject" ColumnName="NewsletterMailSubject" />
+                <ScalarProperty Name="NewsletterSubscriberEmailId" ColumnName="NewsletterSubscriberEmailId" />
+                <ScalarProperty Name="SentMailLogId" ColumnName="SentMailLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsletterSubscribers">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.NewsletterSubscriber">
+              <MappingFragment StoreEntitySet="NewsletterSubscribers">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubscriptionDate" ColumnName="SubscriptionDate" />
+                <ScalarProperty Name="MachineIP" ColumnName="MachineIP" />
+                <ScalarProperty Name="NewsletterSubscriberEmail" ColumnName="NewsletterSubscriberEmail" />
+                <ScalarProperty Name="NewsletterSubscriberId" ColumnName="NewsletterSubscriberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pricings">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Pricing">
+              <MappingFragment StoreEntitySet="Pricing">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PricingBody" ColumnName="PricingBody" />
+                <ScalarProperty Name="PricingHeader" ColumnName="PricingHeader" />
+                <ScalarProperty Name="PricingID" ColumnName="PricingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PricingDetails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.PricingDetail">
+              <MappingFragment StoreEntitySet="PricingDetail">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PricingDetailQuantity" ColumnName="PricingDetailQuantity" />
+                <ScalarProperty Name="PricingDetailTypeID" ColumnName="PricingDetailTypeID" />
+                <ScalarProperty Name="PricingTableTypeID" ColumnName="PricingTableTypeID" />
+                <ScalarProperty Name="PricingDetailID" ColumnName="PricingDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PricingDetailTypes">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.PricingDetailType">
+              <MappingFragment StoreEntitySet="PricingDetailType">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PricingDetailTypeName" ColumnName="PricingDetailTypeName" />
+                <ScalarProperty Name="PricingDetailTypeID" ColumnName="PricingDetailTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PricingTableTypes">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.PricingTableType">
+              <MappingFragment StoreEntitySet="PricingTableType">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PricePerMonth" ColumnName="PricePerMonth" />
+                <ScalarProperty Name="PricingTableTypeName" ColumnName="PricingTableTypeName" />
+                <ScalarProperty Name="PricingTableTypeID" ColumnName="PricingTableTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmtpHosts">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.SmtpHost">
+              <MappingFragment StoreEntitySet="SmtpHost">
+                <ScalarProperty Name="HostTypeId" ColumnName="HostTypeId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActiveUserName" ColumnName="IsActiveUserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SmtpHostId" ColumnName="SmtpHostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostTypes">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.HostType">
+              <MappingFragment StoreEntitySet="HostType">
+                <ScalarProperty Name="EnableSsl" ColumnName="EnableSsl" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PortNumber" ColumnName="PortNumber" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="HostTypeName" ColumnName="HostTypeName" />
+                <ScalarProperty Name="HostTypeId" ColumnName="HostTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ClientBackgroundImage" ColumnName="ClientBackgroundImage" />
+                <ScalarProperty Name="ClientBody" ColumnName="ClientBody" />
+                <ScalarProperty Name="ClientHeader" ColumnName="ClientHeader" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientLists">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.ClientList">
+              <MappingFragment StoreEntitySet="ClientList">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ClientImage" ColumnName="ClientImage" />
+                <ScalarProperty Name="ClientReview" ColumnName="ClientReview" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnlineUserFeedBackDetails">
+            <EntityTypeMapping TypeName="AlphasoftWebsiteDBModel.OnlineUserFeedBackDetail">
+              <MappingFragment StoreEntitySet="OnlineUserFeedBackDetail">
+                <ScalarProperty Name="MachineIP" ColumnName="MachineIP" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserMessage" ColumnName="UserMessage" />
+                <ScalarProperty Name="UserMessageSubject" ColumnName="UserMessageSubject" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="UserFeedBackId" ColumnName="UserFeedBackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

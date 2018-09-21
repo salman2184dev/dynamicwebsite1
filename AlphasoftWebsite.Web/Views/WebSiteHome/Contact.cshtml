@@ -1,0 +1,133 @@
+﻿@model AlphasoftWebsite.Core.Model.OnlineUserFeedBackDetail
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+
+
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>Contact</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+<!-- Contacts -->
+<section class="pt-120 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Map -->
+                <div class="map" data-animate="fadeInUp" data-delay=".1" data-trigger="map" data-map-options='{"latitude": "37.386052", "longitude": "-122.083851", "zoom": "15", "api_key": "AIzaSyCjkssBA3hMeFtClgslO2clWFR6bRraGz0"}'></div>
+            </div>
+            <div class="col-lg-4">
+                <!-- Map description -->
+                <div class="map-description light-bg d-flex align-items-center" data-animate="fadeInUp" data-delay=".4">
+                    <p>" At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis ntium voluptatum cupiditate non provident, lique sunt in culpa qui officia eserunt mollitia animi, id est laborum noakhalir lok fuga "</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="page-contacts-widget-wrapper light-bg d-flex align-items-center" data-animate="fadeInUp" data-delay=".1">
+                    <!-- Contact Info -->
+                    <div class="page-contacts-widget">
+                        <h3 class="h4">Contact Us</h3>
+                        <div class="contact-widget-content">
+                            <p>Sed ut perspiciatis unde omnis natus vitae dicta sunt explicabo.</p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:+1234567890">(+1) 234-567-890</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <a href="mailto:serviney.demo@fakemail.com">serviney.demo@fakemail.com</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>784/A Zirtoli Bazar, Begumgonj, Noakhali-3800, BD</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <!-- Contact Form -->
+                @using (Html.BeginForm("Contact", "WebSiteHome", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("Contact", "WebSiteHome", new { id = 0 }) })) //data-reset
+                {
+                    <div class="contact-form parsley-validate-wrap mt-60" data-animate="fadeInUp" data-delay=".4">
+                        @*@Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.MachineIP)*@
+                        <h3 class="bordered-title">Get In Touch</h3>
+                        <div class="form-response"></div>
+                        <form method="post" action="#">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <input type="text" id="contactName" name="UserFullName" class="theme-input-style" placeholder="Your Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <input type="email" id="contactEmail" name="UserEmail" class="theme-input-style" placeholder="E-mail address">
+                                    </div>
+                                </div>
+                                @*<div class="col-md-6">
+                                        <div class="form-field">
+                                            <input type="text" name="phone" class="theme-input-style" placeholder="Telephone" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <input type="text" id="contactSubject" name="UserMessageSubject" class="theme-input-style" placeholder="Subject">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <textarea name="UserMessage" id="contactMessage" class="theme-input-style" placeholder="Write your message"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+
+                }
+                <!-- End of Contact Form -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End of Contacts -->
+
+<script src="~/Scripts/MyScripts/contact.js"></script>
+@*<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+@section Scripts
+{
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $("submit").click(function() {
+
+                location.reload(true);
+
+            });
+
+        });
+
+    </script>
+}*@

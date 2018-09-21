@@ -1,0 +1,117 @@
+﻿@using System.Configuration
+@model AlphasoftWebsite.Core.Model.CompanyDetail
+@{
+    var imagestring = ConfigurationManager.AppSettings["CompanyImage"];
+}
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "CompanyDetail", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "CompanyDetail", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Company Detail
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.CompanyId, new { id = "modelCompanyId" })
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.CompanyImage, new{ id="modelCompanyImage" })
+                            @Html.HiddenFor(model => model.CreatedBy)
+
+                            <input type="hidden" id="hiddenCompanyId" />
+                            <div class="col-md-6 ">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyName,"Company Name", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6 ">
+                                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @id = "CName",@maxLength="255" } })
+                                        @Html.ValidationMessageFor(model => model.CompanyName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyEmail,"Company Email", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.CompanyEmail, new { htmlAttributes = new { @class = "form-control", @id = "CEmail", @maxLength = "70" } })
+                                        @Html.ValidationMessageFor(model => model.CompanyEmail)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyFax, "Company Phone/Fax", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.CompanyFax, new { htmlAttributes = new { @class = "form-control", @id = "CFax", @maxLength = "50" } })
+                                        @Html.ValidationMessageFor(model => model.CompanyFax)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyAddress, "Address", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.CompanyAddress, new { htmlAttributes = new { @class = "form-control", @id = "CAddress", @maxLength = "100" } })
+                                        @Html.ValidationMessageFor(model => model.CompanyAddress)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GoogleMapLocation, "Map Location", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.TextAreaFor(model => model.GoogleMapLocation, new { htmlAttributes = new { @class = "form-control", @id = "CLocation" }, @rows = "6", @cols = "50" })
+                                        @Html.ValidationMessageFor(model => model.GoogleMapLocation)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                        @if (Model.CompanyId != 0)
+                                        {
+                                            <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","CompanyDetail",new{id=0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyImage, "Image", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-6">
+                                        @if (Model.CompanyImage != null)
+                                        {
+                                            string image = imagestring + Model.CompanyImage;
+                                            <img src="@Url.Content(image)" style="margin: 10px" height="200" width="200" id="previewImage" />
+                                        }
+                                        else
+
+                                        {
+                                            <img src="@Url.Content("../../Image/Company/Demo.png")" style="margin: 10px" height="100" width="100" id="previewImage" />
+                                        }
+                                        <input type="file" name="uploadedFile" id="cimage" accept="image/jpeg, image/png" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+

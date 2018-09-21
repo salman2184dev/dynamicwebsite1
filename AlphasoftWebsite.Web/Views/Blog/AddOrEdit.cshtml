@@ -1,0 +1,107 @@
+﻿@using System.Configuration
+@model AlphasoftWebsite.Core.Model.Blog
+@{
+    var imagestring = ConfigurationManager.AppSettings["BlogImage"];
+}
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "Blog", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    @*<div class="row">*@
+    <section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Blog 
+                    </h3>
+                    <hr />
+                    <div class="form-horizontal col-md-offset-1">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.BlogId, new { id = "modelBlogId" })
+                        @Html.HiddenFor(model => model.CreatedDate)
+                        @Html.HiddenFor(model => model.BlogImage, new{id= "modelBlogImage" })
+                        @Html.HiddenFor(model => model.CreatedBy)
+
+                        <input type="hidden" id="hiddenBlogId" />
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BlogName, "Blog Name", new { @class = "control-label col-md-6" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.BlogName, new { htmlAttributes = new { @class = "form-control", @id = "blogName", @maxLength = "50" } })
+                                    @Html.ValidationMessageFor(model => model.BlogName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BlogDescription, "Description", new { @class = "control-label col-md-6" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.BlogDescription, new { htmlAttributes = new { @class = "form-control", @id = "blogDescription" }, @rows = "6", @cols = "50" })
+                                    @Html.ValidationMessageFor(model => model.BlogDescription)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-6">Blog Category</label>
+                                <div class="col-md-6">
+                                    <select id="ddlBlogCategory" name="BlogCategoryId" class="form-control select2" style="width: 84%">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-6" })
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-6 col-md-6">
+                                    <input type="submit" value="Submit" class="btn btn-success" />
+                                    @if (Model.BlogId != 0)
+                                    {
+                                        <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit", "Blog", new {id = 0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BlogImage, "Image", new { @class = "control-label col-md-1" })
+                                <div class="col-md-6">
+                                    @if (Model.BlogImage != null)
+                                    {
+                                        string image = imagestring + Model.BlogImage;
+                                        <img src="@Url.Content(image)" style="margin: 10px" height="200" width="200" id="previewImage" />
+                                    }
+                                    else
+
+                                    {
+                                        <img src="@Url.Content("../../Image/Blog/Demo.png")" style="margin: 10px" height="100" width="100" id="previewImage" />
+                                    }
+                                    <input type="file" id="bimage" name="uploadedFile" accept="image/jpeg, image/png" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</Section>
+}
+
+
+
+
+

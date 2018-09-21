@@ -1,0 +1,342 @@
+﻿
+@using System.Configuration
+@using AlphasoftWebsite.Core.BLL.Interface
+@using AlphasoftWebsite.Core.BLL.Manager
+@using AlphasoftWebsite.Core.Model
+<!DOCTYPE html>
+<html lang="en">
+@{
+    IWebSiteHomeManager _iWebSiteHomeManager= new WebSiteHomeManager();
+    var imgString = ConfigurationManager.AppSettings["CompanyImage"];
+    var image = "";
+    var companyDetailList = _iWebSiteHomeManager.GetAllCompanyDetail().Where(b => b.IsActive).OrderByDescending(a => a.CreatedDate).Take(1).ToList();
+
+}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Document Title -->
+    <title>Alphasoft</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,700%7CSource+Sans+Pro:300i,400,400i,600,700">
+    @*<link rel="stylesheet" href="~/Content/Frontend/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/Content/Frontend/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/Content/Frontend/plugins/swiper/swiper.min.css">
+        <link rel="stylesheet" href="~/Content/Frontend/plugins/magnific-popup/magnific-popup.min.css">
+        <link rel="stylesheet" href="~/Content/Frontend/plugins/color-switcher/color-switcher.css">
+        <link rel="stylesheet" href="~/Content/Frontend/css/style.css">
+        <link rel="stylesheet" href="~/Content/Frontend/css/responsive.css">
+        <link rel="stylesheet" href="~/Content/Frontend/css/colors/theme-color-1.css">
+        <link rel="stylesheet" href="~/Content/Frontend/css/custom.css">
+        <script src="~/Content/Frontend/js/jquery-3.3.1.min.js"></script>
+        <script src="~/Content/Frontend/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/Frontend/plugins/waypoints/jquery.waypoints.min.js"></script>
+        <script src="~/Content/Frontend/plugins/waypoints/sticky.min.js"></script>
+        <script src="~/Content/Frontend/plugins/swiper/swiper.min.js"></script>
+        <script src="~/Content/Frontend/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="~/Content/Frontend/plugins/parsley/parsley.min.js"></script>*@
+    @*<script src="~/Content/Frontend/plugins/color-switcher/color-switcher.js"></script>*@
+    @*<script src="~/Content/Frontend/plugins/retinajs/retina.min.js"></script>
+        <script src="~/Content/Frontend/plugins/isotope/isotope.pkgd.min.js"></script>
+        <script src="~/Content/Frontend/js/menu.min.js"></script>
+        <script src="~/Content/Frontend/js/scripts.js"></script>
+        <script src="~/Content/Frontend/js/custom.js"></script>*@
+    @Styles.Render("~/Content/Frontend/css")
+    @Scripts.Render("~/Content/Frontend/js")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preLoader"></div>
+    <!-- Main header -->
+    <header class="header">
+        <div class="header-top" data-animate="fadeInDown" data-delay=".5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header-info text-center text-md-left">
+                            <span>Get up to 1 Gbps Download Speed on $98.50/m <a href="#">Get It Now</a></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header-top-right d-flex align-items-center justify-content-center justify-content-md-end">
+                            <form class="parsley-validate d-flex position-relative" action="#">
+                                <input type="text" placeholder="I am looking for" required>
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                            <div class="client-area position-relative">
+                                <span id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account <i class="fa fa-caret-down"></i></span>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Sign In</a>
+                                    <a class="dropdown-item" href="#">Sign Up</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-header" data-animate="fadeInUp" data-delay=".9">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-9">
+                        <!-- Logo -->
+                        @if (companyDetailList.Count > 0)
+                        {
+                            foreach (var item in companyDetailList)
+                             {
+                                 if (item.CompanyImage != null)
+                                 {
+                                     image = imgString + item.CompanyImage;
+                                 }
+                                 <div class="logo">
+                                     <a href="#">
+                                         <img src="@Url.Content(image)" data-rjs="4" alt="Logo">
+                                     </a>
+                                 </div>
+                             }
+                        }
+                       
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-5 col-sm-2 col-3">
+                        <nav>
+                            <!-- Header-menu -->
+                            <div class="header-menu">
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("index", "WebSiteHome")">Home</a>
+                                    </li>
+                                    @*<li class="active"><a href="index.html">Home</a></li>
+                                        <li><a href="#">WHMCS</a></li>
+                                        <li>
+                                            <a href="#">Pages <i class="fa fa-caret-down"></i></a>
+                                            <ul>
+                                                <li><a href="about.html">About</a></li>
+                                                <li><a href="packages.html">Packages</a></li>
+                                                <li><a href="reviews.html">Reviews</a></li>
+                                                <li><a href="faq.html">FAQ</a></li>
+                                                <li><a href="404.html">404</a></li>
+                                            </ul>
+                                        </li>*@
+                                    @*<li>
+                                            <a href="#">Services <i class="fa fa-caret-down"></i></a>
+                                            <ul>
+                                                <li><a href="services.html">All services</a></li>
+                                                <li><a href="cable-tv.html">Cable TV</a></li>
+                                                <li><a href="dedicated-server.html">Dedicated server</a></li>
+                                                <li><a href="internet.html">Internet provider</a></li>
+                                                <li><a href="mobile.html">Mobile packages</a></li>
+                                            </ul>
+                                        </li>*@
+                                    <li>
+                                        <a href="@Url.Action("ServicesList", "WebSiteHome")">Services</a>
+                                        @*<ul>
+                                            <li><a href="#">Cable TV</a></li>
+                                            <li><a href="#">Dedicated server</a></li>
+                                            <li><a href="#">Internet provider</a></li>
+                                            <li><a href="#">Mobile packages</a></li>
+                                        </ul>*@
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("BlogList", "WebSiteHome")">Blog</a>
+                                        @*<ul>
+                                                <li><a href="blog.html">Full Width</a></li>
+                                                <li>
+                                                    <a href="#">Blog With Sidebar <i class="fa fa-caret-right"></i></a>
+                                                    <ul>
+                                                        <li><a href="blog-sidebar-left.html">Blog Sidebar Left</a></li>
+                                                        <li><a href="blog-sidebar-right.html">Blog Sidebar Right</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Blog Columns <i class="fa fa-caret-right"></i></a>
+                                                    <ul>
+                                                        <li><a href="blog-2-columns.html">2 Columns Blog</a></li>
+                                                        <li><a href="blog-3-columns.html">3 Columns Blog</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                            </ul>*@
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("SoftwareList", "WebSiteHome")">Software</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("FAQList", "WebSiteHome")">FAQ</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("ProductList", "WebSiteHome")">Product</a>
+                                    </li>
+                                    @*<li>
+                                        <a href="#">Shop <i class="fa fa-caret-down"></i></a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Products <i class="fa fa-caret-right"></i></a>
+                                                <ul>
+                                                    <li><a href="products-2-columns.html">Products (2 Columns)</a></li>
+                                                    <li><a href="products-3-columns.html">Products (3 Columns)</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="product-details.html">Product Details</a></li>
+                                            <li><a href="cart.html">Cart</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                        </ul>
+                                    </li>*@
+                                    <li><a href="@Url.Action("Contact","WebSiteHome")">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- End of Header-menu -->
+                        </nav>
+                    </div>
+                    @* <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 d-none d-sm-block">
+                            <!-- Header Call -->
+                            <div class="header-call text-right">
+
+                                    <span>Call Now</span>
+                                    <a href="#"></a>
+
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End of Main header -->
+    <div>
+        @RenderBody()
+        @RenderSection("Scripts", false)
+    </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-widgets light-bg border-top pt-80 pb-50">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Widget -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget mb-30" data-animate="fadeInUp" data-delay=".1">
+                            <h3 class="h4">Contact Us</h3>
+                            <div class="contact-widget-content">
+                                <p>Sed ut perspiciatis unde omnis natus vitae dicta sunt explicabo.</p>
+                                <ul class="list-unstyled">
+                                    @if (companyDetailList.Count > 0)
+                                    {
+                                        foreach (var data in companyDetailList)
+                                         {
+                                             <li>
+                                                 <i class="fa fa-phone"></i>
+                                                 <a href="#">@data.CompanyFax</a>
+                                             </li>
+
+                                             <li>
+                                                 <i class="fa fa-envelope-o"></i>
+                                                 <a href="#">@data.CompanyEmail</a>
+                                             </li>
+                                             <li>
+                                                 <i class="fa fa-map-marker"></i>
+                                                 <span>@data.CompanyAddress</span>
+                                             </li>
+                                         }
+                                    }
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Footer Widget -->
+                    <!-- Footer Widget -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget mb-30" data-animate="fadeInUp" data-delay=".3">
+                            <h3 class="h4">My Account</h3>
+                            <div class="menu-wrap">
+                                <ul class="menu">
+                                    <li><a href="#">Pay My Bills</a></li>
+                                    <li><a href="#">Manage My Account</a></li>
+                                    <li><a href="#">Constant Guard</a></li>
+                                    <li><a href="#">Cable Customer Agreement</a></li>
+                                    <li><a href="#">Move Services</a></li>
+                                    <li><a href="#">Manage Users & Alerts</a></li>
+                                    <li><a href="#">Log Out</a></li>
+                                    <li><a href="#">Internet Help</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Footer Widget -->
+                    <!-- Footer Widget -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget mb-30" data-animate="fadeInUp" data-delay=".5">
+                            <h3 class="h4">Support Links</h3>
+                            <div class="menu-wrap">
+                                <ul class="menu">
+                                    <li><a href="#">Comcast Customer Service</a></li>
+                                    <li><a href="#">Bill & Payment Methods</a></li>
+                                    <li><a href="#">Support Forums</a></li>
+                                    <li><a href="#">Privacy Statement</a></li>
+                                    <li><a href="#">Comcast Customer Service</a></li>
+                                    <li><a href="#">Social Responsibility</a></li>
+                                    <li><a href="#">Support Forums</a></li>
+                                    <li><a href="#">Internet Help</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Footer Widget -->
+                    <!-- Footer Widget -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget mb-30" data-animate="fadeInUp" data-delay=".7">
+                            <h3 class="h4">Popular Products</h3>
+                            <div class="menu-wrap">
+                                <ul class="menu">
+                                    <li><a href="#">CC TV Camera</a></li>
+                                    <li><a href="#">Internet Connection Modem</a></li>
+                                    <li><a href="#">Wireless Router</a></li>
+                                    <li><a href="#">Update Anti-virus Softwares</a></li>
+                                    <li><a href="#">Fingerprint Access</a></li>
+                                    <li><a href="#">Powerful Switch Cable</a></li>
+                                    <li><a href="#">Wireless USB Adapter/Card</a></li>
+                                    <li><a href="#">Internet Help</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Footer Widget -->
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer dark-bg">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Copyright -->
+                    <div class="col-md-6">
+                        <div class="copyright-text text-center text-md-left">
+                            <p class="mb-md-0">&copy; 2018 Serviney. All rights reserved.</p>
+                        </div>
+                    </div>
+                    <!-- Social Profiles -->
+                    <div class="col-md-6">
+                        <ul class="social-profiles nav justify-content-center justify-content-md-end">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+    <!-- Back to top -->
+    <div class="back-to-top">
+        <a href="#"> <i class="fa fa-chevron-up"></i></a>
+    </div>
+    <!-- JS Files -->
+
+</body>
+
+</html>

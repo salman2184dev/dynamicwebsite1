@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+@if (ViewBag.Status == true)
+{
+    <div class="alert alert-success" style="text-align: center">
+        Your email is verified now! Please click <a href="@Url.Action("Login")">Here</a> to Log In!
+    </div>
+}
+

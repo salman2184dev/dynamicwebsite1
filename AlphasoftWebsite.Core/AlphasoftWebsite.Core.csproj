@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4E2D61DE-874D-4586-855C-345096CC34EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AlphasoftWebsite.Core</RootNamespace>
+    <AssemblyName>AlphasoftWebsite.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Interface\IBlogCategoryManager.cs" />
+    <Compile Include="BLL\Interface\IBlogManager.cs" />
+    <Compile Include="BLL\Interface\IChatUserManager.cs" />
+    <Compile Include="BLL\Interface\IClientListManager.cs" />
+    <Compile Include="BLL\Interface\IClientManager.cs" />
+    <Compile Include="BLL\Interface\ICommonManager.cs" />
+    <Compile Include="BLL\Interface\ICompanyDetailManager.cs" />
+    <Compile Include="BLL\Interface\ICompanySocialAccountDetailManager.cs" />
+    <Compile Include="BLL\Interface\IConnectionPropertyManager.cs" />
+    <Compile Include="BLL\Interface\IDesignationManager.cs" />
+    <Compile Include="BLL\Interface\IEmployeeManager.cs" />
+    <Compile Include="BLL\Interface\IFactorHeaderManager.cs" />
+    <Compile Include="BLL\Interface\IFactorDetailManager.cs" />
+    <Compile Include="BLL\Interface\IFAQHeaderManager.cs" />
+    <Compile Include="BLL\Interface\IFAQManager.cs" />
+    <Compile Include="BLL\Interface\IFeatureDetailManager.cs" />
+    <Compile Include="BLL\Interface\IFeatureHeaderManager.cs" />
+    <Compile Include="BLL\Interface\IHomeBannerManager.cs" />
+    <Compile Include="BLL\Interface\IIconListManager.cs" />
+    <Compile Include="BLL\Interface\INewsletterMailManager.cs" />
+    <Compile Include="BLL\Interface\INewsletterSubscriberManager.cs" />
+    <Compile Include="BLL\Interface\IOnlineUserFeedBackDetailManager.cs" />
+    <Compile Include="BLL\Interface\IPricingDetailManager.cs" />
+    <Compile Include="BLL\Interface\IPricingDetailTypeManager.cs" />
+    <Compile Include="BLL\Interface\IPricingManager.cs" />
+    <Compile Include="BLL\Interface\IPricingTableTypeManager.cs" />
+    <Compile Include="BLL\Interface\IProductCategoryManager.cs" />
+    <Compile Include="BLL\Interface\IProductManager.cs" />
+    <Compile Include="BLL\Interface\IServiceManager.cs" />
+    <Compile Include="BLL\Interface\IServicePropertyManager.cs" />
+    <Compile Include="BLL\Interface\ISmtpHostManager.cs" />
+    <Compile Include="BLL\Manager\ClientListManager.cs" />
+    <Compile Include="BLL\Manager\ClientManager.cs" />
+    <Compile Include="BLL\Manager\OnlineUserFeedBackDetailManager.cs" />
+    <Compile Include="BLL\Manager\PricingDetailManager.cs" />
+    <Compile Include="BLL\Manager\SmtpHostManager.cs" />
+    <Compile Include="DAL\Interface\IClientListRepository.cs" />
+    <Compile Include="DAL\Interface\IClientRepository.cs" />
+    <Compile Include="DAL\Interface\IOnlineUserFeedBackDetailRepository.cs" />
+    <Compile Include="DAL\Interface\IPricingDetailRepository.cs" />
+    <Compile Include="DAL\Interface\ISmtpHostRepository.cs" />
+    <Compile Include="BLL\Interface\ISocialAccountTypeManager.cs" />
+    <Compile Include="BLL\Interface\ISoftwareCategoryManager.cs" />
+    <Compile Include="BLL\Interface\ISoftwareManager.cs" />
+    <Compile Include="BLL\Interface\IWebSiteHomeManager.cs" />
+    <Compile Include="BLL\Manager\BlogCategoryManager.cs" />
+    <Compile Include="BLL\Manager\BlogManager.cs" />
+    <Compile Include="BLL\Manager\ChatUserManager.cs" />
+    <Compile Include="BLL\Manager\CommonManager.cs" />
+    <Compile Include="BLL\Manager\CompanyDetailManager.cs" />
+    <Compile Include="BLL\Manager\CompanySocialAccountDetailManager.cs" />
+    <Compile Include="BLL\Manager\ConnectionPropertyManager.cs" />
+    <Compile Include="BLL\Manager\DesignationManager.cs" />
+    <Compile Include="BLL\Manager\EmployeeManager.cs" />
+    <Compile Include="BLL\Manager\FactorHeaderManager.cs" />
+    <Compile Include="BLL\Manager\FactorDetailManager.cs" />
+    <Compile Include="BLL\Manager\FAQHeaderManager.cs" />
+    <Compile Include="BLL\Manager\FAQManager.cs" />
+    <Compile Include="BLL\Manager\FeatureDetailManager.cs" />
+    <Compile Include="BLL\Manager\FeatureHeaderManager.cs" />
+    <Compile Include="BLL\Manager\HomeBannerManager.cs" />
+    <Compile Include="BLL\Manager\IconListManager.cs" />
+    <Compile Include="BLL\Manager\NewsletterMailManager.cs" />
+    <Compile Include="BLL\Manager\NewsletterSubscriberManager.cs" />
+    <Compile Include="BLL\Manager\PricingDetailTypeManager.cs" />
+    <Compile Include="BLL\Manager\PricingManager.cs" />
+    <Compile Include="BLL\Manager\PricingTableTypeManager.cs" />
+    <Compile Include="BLL\Manager\ProductCategoryManager.cs" />
+    <Compile Include="BLL\Manager\ProductManager.cs" />
+    <Compile Include="BLL\Manager\ServiceManager.cs" />
+    <Compile Include="BLL\Manager\ServicePropertyManager.cs" />
+    <Compile Include="BLL\Manager\SocialAccountTypeManager.cs" />
+    <Compile Include="BLL\Manager\SoftwareCategoryManager.cs" />
+    <Compile Include="BLL\Manager\SoftwareManager.cs" />
+    <Compile Include="BLL\Manager\WebSiteHomeManager.cs" />
+    <Compile Include="DAL\Interface\IBlogCategoryRepository.cs" />
+    <Compile Include="DAL\Interface\IBlogRepository.cs" />
+    <Compile Include="DAL\Interface\IChatUserRepository.cs" />
+    <Compile Include="DAL\Interface\ICommonRepository.cs" />
+    <Compile Include="DAL\Interface\ICompanyDetailRepository.cs" />
+    <Compile Include="DAL\Interface\ICompanySocialAccountDetailRepository.cs" />
+    <Compile Include="DAL\Interface\IConnectionPropertiesRepository.cs" />
+    <Compile Include="DAL\Interface\IDesignationRepository.cs" />
+    <Compile Include="DAL\Interface\IEmployeeRepository.cs" />
+    <Compile Include="DAL\Interface\IFactorHeaderRepository.cs" />
+    <Compile Include="DAL\Interface\IFactorDetailsRepository.cs" />
+    <Compile Include="DAL\Interface\IFAQHeaderRepository.cs" />
+    <Compile Include="DAL\Interface\IFAQRepository.cs" />
+    <Compile Include="DAL\Interface\IFeatureDetailRepository.cs" />
+    <Compile Include="DAL\Interface\IFeatureHeaderRepository.cs" />
+    <Compile Include="DAL\Interface\IHomeBannerRepository.cs" />
+    <Compile Include="DAL\Interface\IIconListRepository.cs" />
+    <Compile Include="DAL\Interface\INewsletterMailRepository.cs" />
+    <Compile Include="DAL\Interface\INewsletterSubscriberRepository.cs" />
+    <Compile Include="DAL\Interface\IPricingDetailTypeRepository.cs" />
+    <Compile Include="DAL\Interface\IPricingRepository.cs" />
+    <Compile Include="DAL\Interface\IPricingTableTypeRepository.cs" />
+    <Compile Include="DAL\Interface\IProductCategoryRepository.cs" />
+    <Compile Include="DAL\Interface\IProductRepository.cs" />
+    <Compile Include="DAL\Interface\IServicePropertyRepository.cs" />
+    <Compile Include="DAL\Interface\IServiceRepository.cs" />
+    <Compile Include="DAL\Interface\ISocialAccountTypeRepository.cs" />
+    <Compile Include="DAL\Interface\ISoftwareCategoryRepository.cs" />
+    <Compile Include="DAL\Interface\ISoftwareRepository.cs" />
+    <Compile Include="DAL\Interface\IWebSiteHomeRepository.cs" />
+    <Compile Include="DAL\Repository\BlogCategoryRepository.cs" />
+    <Compile Include="DAL\Repository\BlogRepository.cs" />
+    <Compile Include="DAL\Repository\ChatUserRepository.cs" />
+    <Compile Include="DAL\Repository\ClientListRepository.cs" />
+    <Compile Include="DAL\Repository\ClientRepository.cs" />
+    <Compile Include="DAL\Repository\CommonRepository.cs" />
+    <Compile Include="DAL\Repository\CompanyDetailRepository.cs" />
+    <Compile Include="DAL\Repository\CompanySocialAccountDetailRepository.cs" />
+    <Compile Include="DAL\Repository\ConnectionPropertiesRepository.cs" />
+    <Compile Include="DAL\Repository\DesignationRepository.cs" />
+    <Compile Include="DAL\Repository\EmployeeRepository.cs" />
+    <Compile Include="DAL\Repository\FactorHeaderRepository.cs" />
+    <Compile Include="DAL\Repository\FactorDetailsRepository.cs" />
+    <Compile Include="DAL\Repository\FAQHeaderRepository.cs" />
+    <Compile Include="DAL\Repository\FAQRepository.cs" />
+    <Compile Include="DAL\Repository\FeatureDetailRepository.cs" />
+    <Compile Include="DAL\Repository\FeatureHeaderRepository.cs" />
+    <Compile Include="DAL\Repository\HomeBannerRepository.cs" />
+    <Compile Include="DAL\Repository\IconListRepository.cs" />
+    <Compile Include="DAL\Repository\NewsletterMailRepository.cs" />
+    <Compile Include="DAL\Repository\NewsletterSubscriberRepository.cs" />
+    <Compile Include="DAL\Repository\OnlineUserFeedBackDetailRepository.cs" />
+    <Compile Include="DAL\Repository\PricingDetailRepository.cs" />
+    <Compile Include="DAL\Repository\PricingDetailTypeRepository.cs" />
+    <Compile Include="DAL\Repository\PricingRepository.cs" />
+    <Compile Include="DAL\Repository\PricingTableTypeRepository.cs" />
+    <Compile Include="DAL\Repository\ProductCategoryRepository.cs" />
+    <Compile Include="DAL\Repository\ProductRepository.cs" />
+    <Compile Include="DAL\Repository\ServicePropertyRepository.cs" />
+    <Compile Include="DAL\Repository\ServiceRepository.cs" />
+    <Compile Include="DAL\Repository\SmtpHostRepository.cs" />
+    <Compile Include="DAL\Repository\SocialAccountTypeRepository.cs" />
+    <Compile Include="DAL\Repository\SoftwareCategoryRepository.cs" />
+    <Compile Include="DAL\Repository\SoftwareRepository.cs" />
+    <Compile Include="DAL\Repository\WebSiteHomeRepository.cs" />
+    <Compile Include="Model\Blog.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BlogCategory.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatMessage.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChatUser.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Client.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClientList.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CompanyDetail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CompanySocialAccountDetail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConnectionProperty.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Designation.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DropDown.cs" />
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Extended\Blog.cs" />
+    <Compile Include="Model\Extended\ChatUser.cs" />
+    <Compile Include="Model\Extended\Client.cs" />
+    <Compile Include="Model\Extended\ClientList.cs" />
+    <Compile Include="Model\Extended\CompanyDetail.cs" />
+    <Compile Include="Model\Extended\Employee.cs" />
+    <Compile Include="Model\Extended\FactorDetail.cs" />
+    <Compile Include="Model\Extended\FactorHeader.cs" />
+    <Compile Include="Model\Extended\FAQ.cs" />
+    <Compile Include="Model\Extended\FAQHeader.cs" />
+    <Compile Include="Model\Extended\FeatureDetail.cs" />
+    <Compile Include="Model\Extended\FeatureHeader.cs" />
+    <Compile Include="Model\Extended\HomeBanner.cs" />
+    <Compile Include="Model\Extended\NewsletterMail.cs" />
+    <Compile Include="Model\Extended\Pricing.cs" />
+    <Compile Include="Model\Extended\Product.cs" />
+    <Compile Include="Model\Extended\Service.cs" />
+    <Compile Include="Model\Extended\Software.cs" />
+    <Compile Include="Model\Extended\UserLogin.cs" />
+    <Compile Include="Model\FactorDetail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FactorHeader.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FAQ.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FAQHeader.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FeatureDetail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FeatureHeader.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HomeBanner.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HostType.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IconList.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoginInfo.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsletterMail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NewsletterSubscriber.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OnlineUserFeedBackDetail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pricing.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PricingDetail.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PricingDetailType.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PricingTableType.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Product.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductCategory.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ResetPassword.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SentMailLog.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Service.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ServiceProperty.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SmtpHost.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SocialAccountType.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Software.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SoftwareCategory.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Crypto.cs" />
+    <Compile Include="Utility\DataTable.cs" />
+    <Compile Include="Utility\EncryptionDecryption.cs" />
+    <Compile Include="Utility\GlobalClass.cs" />
+    <Compile Include="Utility\Message.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Model\MyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\MyModel.edmx.diagram">
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Model\MyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+      <LastGenOutput>MyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\MyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+      <LastGenOutput>MyModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AlphasoftWebsite\Core\Model\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

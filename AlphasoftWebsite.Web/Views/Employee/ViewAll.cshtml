@@ -1,0 +1,76 @@
+﻿@using System.Configuration
+@model IEnumerable<AlphasoftWebsite.Core.Model.Employee>
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+    int rowNo = 0;
+}
+@{
+    var imagestring = ConfigurationManager.AppSettings["EmployeeImage"];
+}
+<style>
+    th {
+        text-align: center
+    }
+</style>
+<table class="table table-striped table-condensed table-bordered" id="employeeTable" style="text-align: center">
+    <thead>
+        <tr>
+            <th>
+                SL
+            </th>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Designation.DesignationName)</th>
+            <th>Image</th>
+            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td align="center" width="5%">
+                        @(rowNo += 1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Designation.DesignationName)
+                    </td>
+
+                    <td>
+                        @if (item.EmployeeImage != null)
+                        {
+                            string image = imagestring + item.EmployeeImage;
+                            <img src="@Url.Content(image)" width="50" height="50" />
+                        }
+                        else
+                        {
+                            <label style="color: red">Image is not</label>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("AddOrEdit", "Employee", new {id = @item.EmployeeId})')"><i class="fa fa-pencil fa-lg"></i></a>
+                        <a class="btn btn-danger btn-sm" onclick="Delete('@Url.Action("Delete", "Employee", new {id = @item.EmployeeId})')"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

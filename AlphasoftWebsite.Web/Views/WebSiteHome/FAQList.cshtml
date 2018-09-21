@@ -1,0 +1,66 @@
+﻿@using System.Configuration
+@using AlphasoftWebsite.Core.Model
+@model IEnumerable<AlphasoftWebsite.Core.Model.FAQ>
+@{
+    ViewBag.Title = "FAQList";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>FAQ</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+
+<!-- FAQ -->
+<section class="pt-120 pb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <div class="section-title text-center" data-animate="fadeInUp" data-delay=".1">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="faq pb-50" data-animate="fadeInUp" data-delay=".3">
+                    <div class="accordion" id="accordionFaq">
+                        @foreach (FAQ item in ViewBag.faq)
+                        {
+                            <div class="single-faq">
+                                <div class="faq-title d-flex align-items-center">
+                                    <h3 class="h5" data-toggle="collapse" data-target="#@item.FAQId" aria-expanded="false" aria-controls="collapseOne">@item.FAQQuestion</h3>
+                                </div>
+                                <div id="@item.FAQId" class="collapse show" data-parent="#accordionFaq">
+                                    <div class="faq-answer">
+                                        <p><span>Ans: </span>@item.FAQAnswer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of FAQ -->
+

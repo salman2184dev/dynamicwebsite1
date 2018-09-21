@@ -1,0 +1,86 @@
+﻿@using System.Configuration
+@model IEnumerable<AlphasoftWebsite.Core.Model.Blog>
+
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+@{
+    var imgString = ConfigurationManager.AppSettings["BlogImage"];
+    var image = "";   
+
+
+}
+
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="../../Content/Frontend/img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>Blog</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+<!-- Blog -->
+@if (Model != null)
+{
+    <section class="pt-120 pb-65">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="blog">
+                        <div class="row isotope">
+                            <!-- Single Post -->
+                            @foreach (var item in Model)
+                            {
+                                if (item.BlogDescription != null)
+                                {
+                                    if (item.BlogImage != null)
+                                    {
+                                        image = imgString + item.BlogImage;
+                                    }
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="single-news mb-55" data-animate="fadeInUp" data-delay=".1">
+                                            <a class="tip" href="#">@item.BlogCategory.BlogCategoryName</a>
+                                            <img src="@Url.Content(image)" data-rjs="2" alt="">
+                                            <ul class="list-unstyled d-flex align-items-center">
+                                                <li><img src="../../Content/Frontend/img/authors/author1.jpg" alt=""></li>
+                                                <li>by Zane M. Frye</li>
+                                                <li><a href="#">@Convert.ToDateTime(item.CreatedDate).ToString("MMMM-dd-yyyy")</a></li>
+                                            </ul>
+                                            <h3 class="h5">
+                                                <a href="@Url.Action("GetABlogDetailsByID","WebSiteHome", new{ blogId=item.BlogId})">@item.BlogName</a>
+                                            </h3>
+                                            <a href="@Url.Action("GetABlogDetailsByID","WebSiteHome", new{ blogId=item.BlogId})">Continue Reading <i class="fa fa-angle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- End of Single Post -->
+                                }
+
+                            }
+                        </div>
+                        <ul class="pagination blog-pagination align-items-center justify-content-center mb-55" data-animate="fadeInUp" data-delay=".1">
+                            <li><a href="#"><img src="../../Content/Frontend/img/icons/left-arrow.svg" alt="" class="svg"></a></li>
+                            <li class="active"><a href="#">01</a></li>
+                            <li><a href="#">02</a></li>
+                            <li><a href="#">03</a></li>
+                            <li><a href="#">04</a></li>
+                            <li><a href="#">05</a></li>
+                            <li><a href="#"><img src="../../Content/Frontend/img/icons/right-arrow.svg" alt="" class="svg"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Blog -->
+}

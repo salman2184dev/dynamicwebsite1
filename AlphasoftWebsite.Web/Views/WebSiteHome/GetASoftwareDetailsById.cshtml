@@ -1,0 +1,302 @@
+﻿@using AlphasoftWebsite.Core.Model
+
+@model Software
+@using System.Configuration
+@{
+    ViewBag.Title = "GetASoftwareDetailsByID";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+@{
+    var imgString = ConfigurationManager.AppSettings["SoftwareImage"];
+    var image = "";
+
+}
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="../../Content/Frontend/img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>Software Details</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href=""><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="">Software</a></li>
+                        <li><a href="#">Software Details</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+<!-- Product Details -->
+<section class="pt-120 pb-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="product-details-wrap" data-animate="fadeInUp" data-delay=".1">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <!-- Product Images Slider -->
+                        @if (Model.SoftwareDetails != null)
+                        {
+                            if (Model.SoftwareImage != null)
+                            {
+                                image = imgString + Model.SoftwareImage;
+                            }
+                            <div class="product-slider mb-60">
+                                <div class="swiper-container product-gallery">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="@Url.Content(image)" data-rjs="2" alt="">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- End of Product Images Slider -->
+                        }
+                        
+                        </div>
+                        <div class="col-md-7">
+                            <!-- Product info -->
+                            <div class="product-descripton mb-60">
+
+
+                                <h1 class="h4">@Model.SoftwareName</h1>
+
+                                <div class="price">
+                                    <del>$15.50</del> <ins>$13.50</ins>
+                                </div>
+                                <div class="product-details">
+                                    <p>@Model.SoftwareDetails</p>
+                                </div>
+                                <div class="in-stact"><i class="fa fa-check-circle"></i>Available in Stock</div>
+
+
+                                <ul class="product-actions list-unstyled d-flex flex-wrap">
+                                    <li class="quantity-control d-flex justify-content-center align-items-center">
+                                        <span class="minus"><img src="../../Content/Frontend/img/icons/minus.svg" alt=""></span>
+                                        <input type="text" value="1">
+                                        <span class="plus"><img src="../../Content/Frontend/img/icons/plus.svg" alt=""></span>
+                                    </li>
+                                    <li><a href="#" class="btn">Add to Cart</a></li>
+                                    <li><a href="#" class="btn btn-icon"><i class="fa fa-heart-o"></i></a></li>
+                                    <li><a href="#" class="btn btn-icon"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="#" class="btn btn-icon"><i class="fa fa-exchange"></i></a></li>
+                                </ul>
+                                <ul class="product-variations nav">
+                                    <li>Category:</li>
+                                    <li><a href="#">@Model.SoftwareCategory.SoftwareCategoryName</a></li>
+
+                                </ul>
+                                <ul class="product-variations product-share nav">
+                                    <li>Share:</li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- End of Product info -->
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-55">
+                <div class="product-tabbed-content" data-animate="fadeInUp" data-delay=".1">
+                    <ul class="nav pro-tab-nav" role="tablist">
+                        <li>
+                            <a class="active" id="description-tab" data-toggle="tab" href="#pro-description-tab" role="tab" aria-controls="pro-description-tab" aria-selected="true">Description</a>
+                        </li>
+                        <li>
+                            <a id="features-tab" data-toggle="tab" href="#pro-features-tab" role="tab" aria-controls="pro-features-tab" aria-selected="false">Features</a>
+                        </li>
+                        <li>
+                            <a id="reviews-tab" data-toggle="tab" href="#pro-reviews-tab" role="tab" aria-controls="pro-reviews-tab" aria-selected="false"> Reviews</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- Product Description -->
+                        <div class="tab-pane fade show active" id="pro-description-tab" role="tabpanel" aria-labelledby="description-tab">
+                            <p>@Model.SoftwareDetails</p>
+                        </div>
+                        <!-- End of Product Description -->
+                        <!-- Products Features -->
+                        <div class="tab-pane fade" id="pro-features-tab" role="tabpanel" aria-labelledby="features-tab">
+                            <table class="table table-bordered light-bg">
+                                <tbody>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Brand</td>
+                                        <td>Themeforest</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Manufacture</td>
+                                        <td>January 19, 2018</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Expired</td>
+                                        <td>02 years from manufacture</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Color</td>
+                                        <td>Black</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Weight</td>
+                                        <td>192.5 gm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- End of Products Features -->
+                        <div class="tab-pane fade" id="pro-reviews-tab" role="tabpanel" aria-labelledby="reviews-tab">
+                            <!-- Product Comments -->
+                            <ul class="comment-list parent-comment list-unstyled p-0 m-0">
+                                <li>
+                                    <div class="single-comment">
+                                        <div class="comment-author">
+                                            <img src="../../Content/Frontend/img/authors/male.png" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <h6>John M. Stokes <span>January 19, 2018 at 08:35 pm</span></h6>
+                                            <p>Cupiditate non rovident,  minus id quod maxime placeat facere possimus, omnis voluptas umenda  omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-comment">
+                                        <div class="comment-author">
+                                            <img src="../../Content/Frontend/img/authors/female.png" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <h6>Kristina T. Herbert <span>January 19, 2018 at 08:35 pm</span></h6>
+                                            <p>Cupiditate non rovident,  minus id quod maxime placeat facere possimus, omnis voluptas umenda  omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-comment">
+                                        <div class="comment-author">
+                                            <img src="../../Content/Frontend/img/authors/author1.jpg" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <h6>Jonathan J. Johnson <span>January 19, 2018 at 08:35 pm</span></h6>
+                                            <p>Cupiditate non rovident,  minus id quod maxime placeat facere possimus, omnis voluptas umenda  omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- End of Product Comments -->
+                            <hr class="mb-55 mt-60">
+                            <!-- Product Comment Form -->
+                            <div class="comment-form mb-55">
+                                <h3 class="h4">Add A Review</h3>
+                                <div class="comment-rating">
+                                    <p>Your e-mail address will not be published. Drop your rating and review.</p>
+                                </div>
+                                <form class="parsley-validate" action="#">
+                                    <div class="form-field">
+                                        <textarea class="theme-input-style" placeholder="Write your text" required></textarea>
+                                    </div>
+                                    <div class="row half-gutters">
+                                        <div class="col-sm-6">
+                                            <div class="form-field">
+                                                <input type="text" class="theme-input-style" placeholder="Your name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-field">
+                                                <input type="email" class="theme-input-style" placeholder="Email address" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn">Submit Review</button>
+                                </form>
+                            </div>
+                            <!-- End of Product Comment Form -->
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-55 mt-60">
+
+                <!-- Related Products -->
+                <div class="related-products" data-animate="fadeInUp" data-delay=".1">
+                    <h3 class="bordered-title">You May Like</h3>
+                    <div class="row">
+                        @foreach (Software item in ViewBag.SoftwareList)
+                        {
+                            if (item.SoftwareDetails != null)
+                            {
+                                if (item.SoftwareImage != null)
+                                {
+                                    image = imgString + item.SoftwareImage;
+                                }
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="single-product mb-55">
+                                        <span class="tip">@Model.SoftwareCategory.SoftwareCategoryName</span>
+                                        <img src="@Url.Content(image)" data-rjs="2" alt="">
+
+                                        <h3 class="h5">
+                                            <a href="@Url.Action("GetASoftwareDetailsById", "WebSiteHome", new {softwareId = item.SoftwareId})">@item.SoftwareName</a>
+                                        </h3>
+                                        <div class="price-and-all position-relative">
+                                            <span class="price">$10.50</span>
+                                            <ul class="list-unstyled d-flex">
+                                                <li><a href="#" class="btn">Add to Cart</a></li>
+                                                <li><a href="#" class="btn btn-icon"><i class="fa fa-heart-o"></i></a></li>
+                                                <li><a href="#" class="btn btn-icon"><i class="fa fa-eye"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    </div>
+                </div>
+                <!-- End of Related Products -->
+            </div>
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <aside>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <div class="search-widget">
+                            <form class="parsley-validate" action="#">
+                                <div class="form-field">
+                                    <input class="theme-input-style" type="text" placeholder="Search here..." required>
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <h3 class="bordered-title">Categories</h3>
+                        <div class="list-widget">
+                            <ul class="list-unstyled m-0 p-0">
+                                @foreach (SoftwareCategory item in ViewBag.SoftwareCategoryList)
+                                {
+                                    <li><a href="#">@item.SoftwareCategoryName</a> (@item.Softwares.Count)</li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <!-- End of Sidebar -->
+        </div>
+    </div>
+</section>
+<!-- End of Blog -->

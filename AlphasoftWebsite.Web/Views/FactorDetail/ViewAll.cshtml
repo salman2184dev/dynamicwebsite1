@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AlphasoftWebsite.Core.Model.FactorDetail>
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+    int rowNo = 0;
+}
+<style>
+    th {
+        text-align: center
+    }
+</style>
+<table class="table table-striped table-condensed table-bordered" id="factorDetailTable" style="text-align: center">
+    <thead>
+    <tr>
+        <th>
+            SL
+        </th>
+        <th>
+            Factor Detail Name
+        </th>
+        @*<th>
+            Description
+        </th>*@
+        <th>
+              Icon
+        </th>
+        
+        <th>
+            Is Active
+        </th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td align="center" width="5%">
+                    @(rowNo += 1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FactorDetailName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.FactorDetailDescription)
+                </td>*@
+                <td>
+       
+                    <div class="@item.IconList.IconName"></div>
+                </td>
+
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("AddOrEdit", "FactorDetail", new {id = @item.FactorDetailId})')"><i class="fa fa-pencil fa-lg"></i></a>
+                    <a class="btn btn-danger btn-sm" onclick="Delete('@Url.Action("Delete", "FactorDetail", new {id = @item.FactorDetailId})')"><i class="fa fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+    }
+
+    </tbody>
+</table>
+

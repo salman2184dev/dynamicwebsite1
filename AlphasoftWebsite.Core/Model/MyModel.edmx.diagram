@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eca005e86bf64498acfd65172377879b" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Blog" Width="1.5" PointX="15" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.BlogCategory" Width="1.5" PointX="12.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ChatMessage" Width="1.5" PointX="10" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ChatUser" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.CompanyDetail" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.CompanySocialAccountDetail" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ConnectionProperty" Width="1.5" PointX="15" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Designation" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Employee" Width="1.5" PointX="15" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.FactorDetail" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.FactorHeader" Width="1.5" PointX="4.875" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.FAQ" Width="1.5" PointX="19.125" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.FeatureDetail" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.FeatureHeader" Width="1.5" PointX="5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.HomeBanner" Width="1.5" PointX="10.125" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.IconList" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.NewsletterMail" Width="1.5" PointX="16.875" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Product" Width="1.5" PointX="15" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ProductCategory" Width="1.5" PointX="12.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ResetPassword" Width="1.5" PointX="10" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Service" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ServiceProperty" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.SocialAccountType" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Software" Width="1.5" PointX="10" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.SoftwareCategory" Width="1.5" PointX="7.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.User" Width="1.5" PointX="7.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.LoginInfo" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_Blog_BlogCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_ChatMessages_ChatMessages" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_ConnectionProperties_ConnectionProperties" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_CompanySocialAccountDetail_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_CompanySocialAccountDetail_SocialAccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_Employee_Designation" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_FactorDetails_IconList" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_FeatureDetails_IconList" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_Service_IconList" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_SocialAccountType_IconList" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_ResetPassword_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_ServiceProperty_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_Software_SoftwareCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_LoginInfo_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.FAQHeader" Width="1.5" PointX="17" PointY="9.875" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.SentMailLog" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.NewsletterSubscriber" Width="2" PointX="18.875" PointY="7.625" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Pricing" Width="1.5" PointX="7.625" PointY="18.625" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.PricingDetail" Width="1.5" PointX="10.125" PointY="14.625" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.PricingDetailType" Width="2" PointX="9.75" PointY="18.625" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.PricingTableType" Width="1.5" PointX="7.625" PointY="14.75" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingDetailType" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_PricingDetail_PricingTableType" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.SmtpHost" Width="1.5" PointX="19.375" PointY="1.125" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.HostType" Width="1.5" PointX="17" PointY="1.375" />
+        <AssociationConnector Association="AlphasoftWebsiteDBModel.FK_SmtpHost_HostType" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.Client" Width="1.5" PointX="19.375" PointY="16.75" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.ClientList" Width="1.5" PointX="16.375" PointY="19.75" />
+        <EntityTypeShape EntityType="AlphasoftWebsiteDBModel.OnlineUserFeedBackDetail" Width="2.125" PointX="19.125" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

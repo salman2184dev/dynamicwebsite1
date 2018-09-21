@@ -1,0 +1,83 @@
+﻿
+@using System.Configuration
+@model IEnumerable<AlphasoftWebsite.Core.Model.ClientList>
+@{
+    var imagestring = ConfigurationManager.AppSettings["ClientListImage"];
+}
+
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+    int rowNo = 0;
+}
+<style>
+    th {
+        text-align: center
+    }
+</style>
+<table class="table table-striped table-condensed table-bordered" id="blogTable" style="text-align: center">
+    <thead>
+        <tr>
+            <th>
+                SL
+            </th>
+            <th>
+                ClientList Name
+            </th>
+            <th>
+                Client Review
+            </th>
+
+            <th>
+                Client Image
+            </th>
+            <th>
+                Is Active
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td align="center" width="5%">
+                        @(rowNo += 1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientReview)
+                    </td>
+
+
+                    <td align="center">
+
+                        @if (item.ClientImage != null)
+                        {
+                            string image = imagestring + item.ClientImage;
+                            // <img onerror="this.src='@Url.Content("../../Image/HomeBanner/image-icon.png")';" width="50" height="50" />
+                            <img id="img_ClientImage" width="100" height="100" class="thumbnail" src='@Url.Content(image)' alt="Missing Image" />
+                        }
+                        else
+                        {
+                            <label style="color: red">Image is not Available</label>
+                        }
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("AddOrEdit", "ClientList", new {id = @item.ClientID})')"><i class="fa fa-pencil fa-lg"></i></a>
+                        <a class="btn btn-danger btn-sm" onclick="Delete('@Url.Action("Delete", "ClientList", new {id = @item.ClientID})')"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

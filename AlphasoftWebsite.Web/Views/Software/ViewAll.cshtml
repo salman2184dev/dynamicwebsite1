@@ -1,0 +1,84 @@
+﻿@using System.Configuration
+@model IEnumerable<AlphasoftWebsite.Core.Model.Software>
+@{
+    var imagestring = ConfigurationManager.AppSettings["SoftwareImage"];
+}
+@{
+    ViewBag.Title = "View All";
+    Layout = null;
+    int rowNo = 0;
+}
+<style>
+    th {
+        text-align: center
+    }
+</style>
+<table class="table table-striped table-condensed table-bordered" id="softwareTable" style="text-align: center">
+    <thead>
+        <tr>
+            <th>
+                SL
+            </th>
+            <th>
+                Software Name
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Is Active
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td align="center" width="5%">
+                        @(rowNo += 1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoftwareName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoftwareDetails)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoftwareCategory.SoftwareCategoryName)
+                    </td>
+
+                    <td align ="center">
+                        
+                        @if (item.SoftwareImage != null)
+                        {
+                            string image = imagestring + item.SoftwareImage;
+                            // <img onerror="this.src='@Url.Content("../../Image/HomeBanner/image-icon.png")';" width="50" height="50" />
+                            <img id="img_softwareImage" width="250" height="150" class="thumbnail" src = '@Url.Content(image)' alt="Missing Image"/>
+                        }
+                        else
+                        {
+                            <label style="color: red">Image is not Available</label>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("AddOrEdit", "Software", new {id = @item.SoftwareId})')"><i class="fa fa-pencil fa-lg"></i></a>
+                        <a class="btn btn-danger btn-sm" onclick="Delete('@Url.Action("Delete", "Software", new {id = @item.SoftwareId})')"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

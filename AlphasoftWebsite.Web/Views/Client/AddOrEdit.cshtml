@@ -1,0 +1,99 @@
+﻿@using System.Configuration
+@model AlphasoftWebsite.Core.Model.Client
+@{
+    var imagestring = ConfigurationManager.AppSettings["ClientBackgroundImage"];
+}
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "Client", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "Client", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    @*<div class="row">*@
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Client 
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal col-md-offset-1">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.ClientID, new { id = "modelClientId" })
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.ClientBackgroundImage, new{id= "modelClientImage" })
+                            @Html.HiddenFor(model => model.CreatedBy)
+
+                            <input type="hidden" id="hiddenClientId" />
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ClientHeader, "Client Header", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.ClientHeader, new { htmlAttributes = new { @class = "form-control", @id = "clientHeader", @maxLength = "50" } })
+                                        @Html.ValidationMessageFor(model => model.ClientHeader)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ClientBody, "Description", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.ClientBody, new { htmlAttributes = new { @class = "form-control", @id = "clientBody" }, @rows = "6", @cols = "50" })
+                                        @Html.ValidationMessageFor(model => model.ClientBody)
+                                    </div>
+                                </div>
+
+                               
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                        @if (Model.ClientID != 0)
+                                        {
+                                            <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit", "Client", new {id = 0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ClientBackgroundImage, "Image", new { @class = "control-label col-md-1" })
+                                    <div class="col-md-6">
+                                        @if (Model.ClientBackgroundImage != null)
+                                        {
+                                            string image = imagestring + Model.ClientBackgroundImage;
+                                            <img src="@Url.Content(image)" style="margin: 10px" height="200" width="200" id="previewImage" />
+                                        }
+                                        else
+
+                                        {
+                                            <img src="@Url.Content("../../Image/Client/Demo.png")" style="margin: 10px" height="100" width="100" id="previewImage" />
+                                        }
+                                        <input type="file" id="clientImage" name="uploadedFile" accept="image/jpeg, image/png" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    </Section>
+}
+
+
+
+
+

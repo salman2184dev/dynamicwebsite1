@@ -1,0 +1,128 @@
+﻿@using System.Configuration
+@using AlphasoftWebsite.Core.Model
+@model IEnumerable<AlphasoftWebsite.Core.Model.Product>
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+@{
+    var imgString = ConfigurationManager.AppSettings["ProductImage"];
+    var image = "";
+}
+
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>Product</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href=""><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#">Product</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+@if (Model != null)
+{
+    <!-- Products -->
+    <section class="pt-120 pb-65">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="products">
+                        <div class="row">
+                            <!-- Single Product -->
+                            @foreach (var item in Model)
+                            {
+                                if (item.ProductDetails != null)
+                                {
+                                    if (item.ProductImage != null)
+                                    {
+                                        image = imgString + item.ProductImage;
+                                    }
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="single-product mb-55" data-animate="fadeInUp" data-delay=".1">
+                                            <span class="tip">@item.ProductCategory.ProductCategoryName</span>
+                                            <img src="@Url.Content(image)" data-rjs="2" alt="">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                            <h3 class="h5">
+                                                <a href="@Url.Action("GetAProductDetailsById", "WebSiteHome", new {productId = item.ProductId})">@item.ProductName</a>
+                                            </h3>
+                                            <div class="price-and-all position-relative">
+                                                <span class="price">$10.50</span>
+                                                <ul class="list-unstyled d-flex">
+                                                    <li><a href="#" class="btn">Add to Cart</a></li>
+                                                    <li><a href="#" class="btn btn-icon"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#" class="btn btn-icon"><i class="fa fa-eye"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+
+                            <!-- End of Single Product -->
+
+                        </div>
+                        <!-- Pagination -->
+                        <ul class="pagination blog-pagination align-items-center justify-content-center mb-55" data-animate="fadeInUp" data-delay=".1">
+                            <li><a href="#"><img src="../../Content/Frontend/img/icons/left-arrow.svg" alt="" class="svg"></a></li>
+                            <li class="active"><a href="#">01</a></li>
+                            <li><a href="#">02</a></li>
+                            <li><a href="#">03</a></li>
+                            <li><a href="#">04</a></li>
+                            <li><a href="#">05</a></li>
+                            <li><a href="#"><img src="../../Content/Frontend/img/icons/right-arrow.svg" alt="" class="svg"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <aside>
+                        <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                            <div class="search-widget">
+                                <form class="parsley-validate" action="#">
+                                    <div class="form-field">
+                                        <input class="theme-input-style" type="text" placeholder="Search here..." required>
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                            <h3 class="bordered-title">Categories</h3>
+                            <div class="list-widget">
+                                <ul class="list-unstyled m-0 p-0">
+                                    @foreach (ProductCategory item in ViewBag.ProductCategoryList)
+                                    {
+                                        <li><a href="#">@item.ProductCategoryName</a> (@item.Products.Count)</li>
+                                    }
+                                   
+
+                                </ul>
+                            </div>
+                        </div>
+                        
+                       
+                    </aside>
+                </div>
+                <!-- End of Sidebar -->
+            </div>
+        </div>
+    </section>
+    <!-- End of Products -->
+}
+

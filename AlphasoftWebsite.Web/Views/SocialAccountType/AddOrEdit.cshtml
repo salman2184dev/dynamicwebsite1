@@ -1,0 +1,74 @@
+﻿@model AlphasoftWebsite.Core.Model.SocialAccountType
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "SocialAccountType", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "SocialAccountType", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Social Account Type
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.SocialAccountTypeId, new { id = "modelSocialAccountTypeId" })
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.CreatedBy)
+                            @Html.HiddenFor(model => model.UpdatedBy)
+
+
+                            <input type="hidden" id="hiddenSocialAccountTypeId" />
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SocialAccountName, "Social Account Name", new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SocialAccountName, new { htmlAttributes = new { @class = "form-control", @id = "SocialAccName", @maxLength = "50" } })
+                                    @Html.ValidationMessageFor(model => model.SocialAccountName)
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Icon Name</label>
+                                <div class="col-md-8">
+                                    <select id="ddlIconList" name="IconId" class="form-control select2" style="width: 26.5%">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <input type="submit" value="Submit" class="btn btn-success" />
+                                    @if (Model.SocialAccountTypeId != 0)
+                                    {
+                                        <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","SocialAccountType",new{id=0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+

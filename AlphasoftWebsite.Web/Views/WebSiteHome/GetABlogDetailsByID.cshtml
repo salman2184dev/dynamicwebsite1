@@ -1,0 +1,257 @@
+﻿@using AlphasoftWebsite.Core.Model
+@using System.Configuration
+@model Blog
+
+@{
+    ViewBag.Title = "GetABlogDetailsByID";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+@{
+    var imgString = ConfigurationManager.AppSettings["BlogImage"];
+    var image = "";
+
+}
+<!-- Page Title -->
+<section class="page-title-wrap" data-bg-img="../../Content/Frontend/img/hills.jpg" data-rjs="2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-title" data-animate="fadeInUp" data-delay="1.2">
+                    <h2>Blog Details</h2>
+                    <ul class="list-unstyled m-0 d-flex">
+                        <li><a href=""><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="#">Blog Details</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Page Title -->
+<!-- Blog -->
+<section class="pt-120 pb-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-details mb-55">
+                    <!-- Post Info -->
+               
+                    @if (Model.BlogDescription != null)
+                    {
+                        if (Model.BlogImage != null)
+                         {
+                             image = imgString + Model.BlogImage;
+                         }
+                        <div class="single-news">
+                            <img src="@Url.Content(image)" data-rjs="2" alt="" data-animate="fadeInUp" data-delay=".1">
+                            <ul class="list-unstyled d-flex align-items-center" data-animate="fadeInUp" data-delay=".2">
+                                <li><img src="../../Content/Frontend/img/authors/female.png" alt=""></li>
+                                <li>by <a href="#">Zane M. Frye</a></li>
+                                <li><a href="#">@Convert.ToDateTime(Model.CreatedDate).ToString("MMMM-dd-yyyy")</a></li>
+                                <li><a href="#" class="tip">@Model.BlogCategory.BlogCategoryName</a></li>
+                            </ul>
+                        </div>
+                    }
+                
+                    <!-- Post Contents -->
+                    <div class="post-content mb-55 clearfix" data-animate="fadeInUp" data-delay=".1">
+                        <h1 class="h2">@Model.BlogName</h1>
+
+                        <p> @Model.BlogDescription</p>
+
+                    </div>
+
+                    <div class="tags-and-share light-bg mb-55 d-md-flex align-items-md-center justify-content-md-between" data-animate="fadeInUp" data-delay=".1">
+                        <div class="tags d-flex flex-wrap align-items-center">
+                            <i class="fa fa-tags"></i>
+                            <a href="#">envato</a>
+                            <a href="#">internet</a>
+                            <a href="#">technology</a>
+                        </div>
+                        <div class="post-share text-md-right">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-vimeo"></i></a>
+                            <a href="#"><i class="fa fa-share-alt"></i></a>
+                        </div>
+                    </div>
+
+
+
+                    <hr class="mb-55">
+
+                    <!-- Post Comments -->
+                    <div class="sn-comments mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <h3 class="bordered-title">03 Comments</h3>
+                        <ul class="comment-list parent-comment list-unstyled p-0 m-0">
+                            <li>
+                                <div class="single-comment">
+                                    <div class="comment-author">
+                                        <img src="../../Content/Frontend/img/authors/male.png" alt="">
+                                    </div>
+                                    <div class="comment-content">
+                                        <h6>John M. Stokes <span>January 19, 2018 at 08:35 pm</span></h6>
+                                        <p>Cupiditate non rovident, minus id quod maxime placeat facere possimus, omnis voluptas umenda omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+                                        <a class="comment-reply" href="#">Reply</a>
+                                    </div>
+                                </div>
+                                <ul class="comment-list sub-comment list-unstyled m-0">
+                                    <li>
+                                        <div class="single-comment">
+                                            <div class="comment-author">
+                                                <img src="../../Content/Frontend/img/authors/author1.jpg" alt="">
+                                            </div>
+                                            <div class="comment-content">
+                                                <h6>John M. Stokes <span>January 19, 2018 at 08:35 pm</span></h6>
+                                                <p>Cupiditate non rovident, minus id quod maxime placeat facere possimus, omnis voluptas umenda omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+                                                <a class="comment-reply" href="#">Reply</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="single-comment">
+                                    <div class="comment-author">
+                                        <img src="../../Content/Frontend/img/authors/female.png" alt="">
+                                    </div>
+                                    <div class="comment-content">
+                                        <h6>Kristina T. Herbert <span>January 19, 2018 at 08:35 pm</span></h6>
+                                        <p>Cupiditate non rovident, minus id quod maxime placeat facere possimus, omnis voluptas umenda omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+                                        <a class="comment-reply" href="#">Reply</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="single-comment">
+                                    <div class="comment-author">
+                                        <img src="../../Content/Frontend/img/authors/author1.jpg" alt="">
+                                    </div>
+                                    <div class="comment-content">
+                                        <h6>Jonathan J. Johnson <span>January 19, 2018 at 08:35 pm</span></h6>
+                                        <p>Cupiditate non rovident, minus id quod maxime placeat facere possimus, omnis voluptas umenda omnis dolor repellendus. mporibus molestiae non recusandae.</p>
+                                        <a class="comment-reply" href="#">Reply</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class="mb-55">
+                    <!-- Post Comment Form -->
+                    <div class="comment-form mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <h3 class="bordered-title">Leave a comment</h3>
+                        <form class="parsley-validate" action="#">
+                            <div class="form-field">
+                                <textarea class="theme-input-style" placeholder="Write your text" required></textarea>
+                            </div>
+                            <div class="row half-gutters">
+                                <div class="col-sm-4">
+                                    <div class="form-field">
+                                        <input type="text" class="theme-input-style" placeholder="Your name" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-field">
+                                        <input type="email" class="theme-input-style" placeholder="Email address" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-field">
+                                        <input type="url" class="theme-input-style" placeholder="Website">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Post Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <aside>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <div class="search-widget">
+                            <form class="parsley-validate" action="#">
+                                <div class="form-field">
+                                    <input class="theme-input-style" type="text" placeholder="Search here..." required>
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <h3 class="bordered-title">Categories</h3>
+                        <div class="list-widget">
+                            <ul class="list-unstyled m-0 p-0">
+                                @foreach (BlogCategory item in ViewBag.BlogCategoryList)
+                                {
+
+                                    <li><a href="#">@item.BlogCategoryName</a> (@item.Blogs.Count)</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <h3 class="bordered-title">Recent Post</h3>
+                        <div class="recent-posts-widget">
+                            <ul class="list-unstyled m-0 p-0">
+                                @foreach (Blog item in ViewBag.BlogList)
+                                {
+                                    if (item.BlogDescription != null)
+                                    {
+                                        if (item.BlogImage != null)
+                                        {
+                                            image = imgString + item.BlogImage;
+                                        }
+                                        <li>
+                                            <img src="@Url.Content(image)" alt="" style="max-height: 300px; max-width: 180px;">
+                                            <div class="rpw-content">
+                                                <a class="tip" href="#">@item.BlogCategory.BlogCategoryName</a>
+                                                <h5><a href="@Url.Action("GetABlogDetailsByID", "WebSiteHome", new {blogId = item.BlogId})">@item.BlogName</a></h5>
+                                                <a href="#">@Convert.ToDateTime(item.CreatedDate).ToString("MMMM-dd-yyyy")</a>
+                                            </div>
+                                        </li>
+                                    }
+
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <ul class="social-share list-unstyled d-flex flex-wrap m-0 p-0">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-flickr"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-widget mb-55" data-animate="fadeInUp" data-delay=".1">
+                        <h3 class="bordered-title">Archives</h3>
+                        <div class="list-widget">
+                            <ul class="list-unstyled m-0 p-0">
+                                <li><a href="#">June 2018</a> (29)</li>
+                                <li><a href="#">May 2018</a> (18)</li>
+                                <li><a href="#">April 2018</a> (59)</li>
+                                <li><a href="#">March 2018</a> (38)</li>
+                                <li><a href="#">February 2018</a> (42)</li>
+                                <li><a href="#">January 2018</a> (93)</li>
+                                <li><a href="#">December 2017</a> (69)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+            <!-- End of Sidebar -->
+        </div>
+    </div>
+</section>
+<!-- End of Blog -->

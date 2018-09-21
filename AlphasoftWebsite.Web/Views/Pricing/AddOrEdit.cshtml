@@ -1,0 +1,66 @@
+﻿@model AlphasoftWebsite.Core.Model.Pricing
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "Pricing", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "Pricing", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Price
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.PricingID)
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.CreatedBy)
+
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PricingHeader, "Pricing Header Name", new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PricingHeader, new { htmlAttributes = new { @class = "form-control", @id = "PriceHeader", @maxLength = "50" } })
+                                    @Html.ValidationMessageFor(model => model.PricingHeader)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PricingBody, "Pricing Body", new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PricingBody, new { htmlAttributes = new { @class = "form-control", @id = "PriceBody" }, @rows = "6", @cols = "50" })
+                                    @Html.ValidationMessageFor(model => model.PricingBody)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <input type="submit" value="Submit" class="btn btn-success" />
+                                    @if (Model.PricingID != 0)
+                                    {
+                                        <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","Pricing",new{id=0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

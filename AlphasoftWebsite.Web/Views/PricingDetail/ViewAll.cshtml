@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AlphasoftWebsite.Core.Model.PricingDetail>
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+    int rowNo = 0;
+
+}
+<style>
+    th {
+        text-align: center
+    }
+</style>
+<table class="table table-striped table-condensed table-bordered" id="pricingDetailTable" style="text-align: center">
+    <thead>
+        <tr>
+            <th>SL</th>
+            <th>
+                Pricing Detail Quantity
+            </th>
+
+            <th>
+                Pricing Table Type
+            </th>
+            <th>
+                Pricing Detail Type
+            </th>
+            <th>
+                Is Active
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td align="center" width="5%">
+                        @(rowNo += 1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PricingDetailQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PricingTableType.PricingTableTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PricingDetailType.PricingDetailTypeName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("AddOrEdit", "PricingDetail", new {id = @item.PricingDetailID})')"><i class="fa fa-pencil fa-lg"></i></a>
+                        <a class="btn btn-danger btn-sm" onclick="Delete('@Url.Action("Delete", "PricingDetail", new {id = @item.PricingDetailID})')"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,81 @@
+﻿@model AlphasoftWebsite.Core.Model.CompanySocialAccountDetail
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "CompanySocialAccountDetail", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "CompanySocialAccountDetail", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Company Social Account Detail
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal col-md-offset-1">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.CompanySocialAccountDetailId, new { id = "modelCompanySocialAccountDetailId" })
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.CreatedBy)
+
+
+                            <input type="hidden" id="hiddenCompanySocialAccountDetailId" />
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.URL, "URL", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control", @id = "CompanySocialAccountURL" } })
+                                        @Html.ValidationMessageFor(model => model.URL)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Companny</label>
+                                    <div class="col-md-6">
+                                        <select id="ddlCompanyDetail" name="CompanyId" class="form-control select2" style="width: 84%">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Social Account</label>
+                                    <div class="col-md-6">
+                                        <select id="ddlSocialAccountType" name="SocialAccountTypeId" class="form-control select2" style="width: 84%">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                        @if (Model.CompanySocialAccountDetailId != 0)
+                                        {
+                                            <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","CompanySocialAccountDetail",new{id=0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Section>
+}
+
+
+

@@ -1,0 +1,82 @@
+﻿@model AlphasoftWebsite.Core.Model.FactorDetail
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "FactorDetail", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("AddOrEdit", "FactorDetail", new { id = 0 }) }))//data-reset
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Factor Detail
+                        </h3>
+                        <hr />
+                        <div class="form-horizontal col-md-offset-2">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.FactorDetailId, new { id = "modelFactorDetailId" })
+                            @Html.HiddenFor(model => model.CreatedDate)
+                            @Html.HiddenFor(model => model.CreatedBy)
+
+
+                            <input type="hidden" id="hiddenFactorDetailId" />
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FactorDetailName, "Factor Detail Name", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.FactorDetailName, new { htmlAttributes = new { @class = "form-control", @id = "FactorDetailName", @maxLength = "50" } })
+                                        @Html.ValidationMessageFor(model => model.FactorDetailName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FactorDetailDescription, "Description", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.FactorDetailDescription, new { htmlAttributes = new { @class = "form-control", @id = "Description", @maxLength = "250" }, @rows = "6", @cols = "50" })
+                                        @Html.ValidationMessageFor(model => model.FactorDetailDescription)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Icon</label>
+                                    <div class="col-md-6">
+                                        <select id="ddlIcon" name="IconId" class="form-control select2" style="width: 92%">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive,"Is Active", new { @class = "control-label col-md-6" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                        @if (Model.FactorDetailId != 0)
+                                        {
+                                            <a class="btn btn-default" onclick="refreshAddNewTab('@Url.Action("AddOrEdit","FactorDetail",new{id=0})', false)"><i class="fa fa-plus"></i> Add New</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+
+
+
