@@ -34,6 +34,7 @@ namespace AlphasoftWebsite.Web.Controllers
             if (id != 0)
             {
                 companyDetail = _iCompanyDetailManager.GetACompanyDetail(id);
+
             }
             return View(companyDetail);
         }
